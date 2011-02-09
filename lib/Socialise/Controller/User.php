@@ -1,143 +1,144 @@
 <?php
 
 /**
-* socialise
-*
-* @copyright Fabian Wuertz
-* @link http://code.zikula.org/socialise
-* @version $Id$
-* @license See license.txt
-*/
+ * Copyright socialise Team 2011
+ *
+ * This work is contributed to the Zikula Foundation under one or more
+ * Contributor Agreements and licensed to You under the following license:
+ *
+ * @license GNU/LGPLv3 (or at your option, any later version).
+ * @package socialise
+ * @link http://code.zikula.org/socialise
+ *
+ * Please see the NOTICE file distributed with this source code for further
+ * information regarding copyright and licensing.
+ */
 
-class socialise_Controller_User extends Zikula_Controller
+class Socialise_Controller_User extends Zikula_Controller
 {
 
-	public function sharethis($args)
-	{
-		extract($args);
-		unset($args);
+    /**
+    * Twitter plugin
+    *
+    * @param        string   $args   parameter from the plugin
+    * @return       string|boolean Output.
+    */
+    public function twitter($args)
+    {
+        # More info: http://twitter.com/about/resources/tweetbutton#type-fields
+        extract($args);
+        unset($args);
+        if( empty($url) ) {
+            $url = ModUtil::apiFunc('socialise', 'user', 'currentUrl');
+        }
+        if( empty( $title ) ) {
+            $title ==  '';
+        }
+        if( empty($count) ) {
+            $count = 'none';
+        }
 
-		if( empty($url) ) {
-			$url = ModUtil::apiFunc('socialise', 'user', 'currentUrl');
-		}
+        $this->view->assign('url', $url);
+        $this->view->assign('title', $title);
+        $this->view->assign('count', $count); # none | horizontal
+        return $this->view->fetch('plugin/twitter.tpl');
+    }
 
-		$this->view->assign( 'url',     $url);
-		$this->view->assign( 'title', $title);
-		return $this->view->fetch('plugin/sharethis.tpl');
-	}
+    /**
+    * Facebook like button plugin
+    *
+    * @param        string   $args   parameter from the plugin
+    * @return       string|boolean Output.
+    */
+    public function like($args) {
 
+        # http://developers.facebook.com/docs/reference/plugins/like/
 
-	public function twitter($params)
-	{
-		# More info: http://twitter.com/about/resources/tweetbutton#type-fields
-		extract($params);
-		unset($params);
-		if( empty($url) ) {
-			$url = ModUtil::apiFunc('socialise', 'user', 'currentUrl');
-		}
-		if( empty( $title ) ) {
-			$title ==  '';
-		}
-		if( empty($count) ) {
-			$count = 'none';
-		}
+        $like = unserialize( $this->getVar( 'like' ) );
+        if(empty($like['id'])) {
+            return '';
+        }
 
-		$this->view->assign( 'url',     $url);
-		$this->view->assign( 'title', $title);
-		$this->view->assign( 'count', $count); # none | horizontal
-		return $this->view->fetch('plugin/twitter.tpl');
-	}
+        extract($args);
+        unset($args);
 
+        # url
+        if(empty($url)) {
+            $url = ModUtil::apiFunc('socialise', 'user', 'currentUrl');
+        }
+        $this->view->assign('url', $url);
 
-	public function like ($params) {
+        # count box
+        if(empty($layout)) {
+            $layout = 'standard';
+        } else if ($layout == 'horrizontal') {
+            $layout = 'button_count';
+        } else if ($layout == 'vertical') {
+            $layout = 'box_count';
+        }
+        $this->view->assign('layout', $layout);
 
-		# http://developers.facebook.com/docs/reference/plugins/like/
+        # faces
+        $this->view->assign('faces', 'false');
 
-		$like = unserialize( $this->getVar( 'like' ) );
-		if( empty( $like['id'] ) ) {
-			return '';
-		}
+        $metas = array(
+            'title' => PageUtil::getVar('title'),
+            'type' => 'news',
+            'url' => $url,
+            //'image' => '',
+            'site_name' => ModUtil::getVar('ZConfig', 'sitename'),
+        );
 
-		extract($params);
-		unset($params);
+        # meta tages
+        PageUtil::addVar('rawtext', '<meta property="fb:' . $like['type'] . '" content="' . $like['id'] . '" />');
 
-		# url
-		if( empty($url) ) {
-			$url = ModUtil::apiFunc('socialise', 'user', 'currentUrl');
-		}
-		$this->view->assign( 'url', $url);
-
-		# count box
-		if( empty( $layout ) ) {
-			$layout = 'standard';
-		} else if ( $layout == 'horrizontal' ) {
-			$layout = 'button_count';
-		} else if ( $layout == 'vertical' ) {
-			$layout = 'box_count';
-		}
-		$this->view->assign( 'layout', $layout);
-
-		# faces
-		$this->view->assign( 'faces', 'false');
-
-		$metas = array(
-			'title' => PageUtil::getVar('title'),
-			'type' => 'news',
-			'url' => $url,
-			//'image' => '',
-			'site_name' => ModUtil::getVar( 'ZConfig', 'sitename' ),
-		);
-
-		# meta tages
-		PageUtil::addVar('rawtext', '<meta property="fb:' . $like['type'] . '" content="' . $like['id'] . '" />');
-
-		foreach( $metas as $key => $value ) {
-			PageUtil::addVar('rawtext', '<meta property="og:' . $key . '" content="' . $value . '" />' );
-		}
+        foreach( $metas as $key => $value ) {
+            PageUtil::addVar('rawtext', '<meta property="og:' . $key . '" content="' . $value . '" />' );
+        }
 
 
 
-		if( !empty( $implementation ) and $implementation == 'iframe') {
-			return $this->view->fetch('plugin/like_frame.tpl');
-		} else {
-			return $this->view->fetch('plugin/like.tpl');
-		}
-	}
+        if(!empty($implementation) and $implementation == 'iframe') {
+            return $this->view->fetch('plugin/like_frame.tpl');
+        } else {
+            return $this->view->fetch('plugin/like.tpl');
+        }
+    }
 
+    /**
+    * Sexybottun plugin
+    *
+    * @param        string   $args   parameter from the plugin
+    * @return       string|boolean Output.
+    */
+    public function sexybookmarks($args)
+    {
+        extract($args);
+        unset($args);
 
-	public function sexybookmarks($args)
-	{
-		extract($args);
-		unset($args);
+        # url
+        if(empty($url)) {
+            $url = ModUtil::apiFunc('socialise', 'user', 'currentUrl');
+        }
 
-		# url
-		if( empty($url) ) {
-			$url = ModUtil::apiFunc('socialise', 'user', 'currentUrl');
-		}
+        $services = ModUtil::apiFunc('socialise', 'user', 'getServices');
+        foreach($services as $key => $value) {
+            $services[$key]['url'] = str_replace( "{url}",$url, $value['url']);
+            $services[$key]['url'] = str_replace( "{title}",$title, $services[$key]['url'] );
+        }
 
-		$services = ModUtil::apiFunc('socialise', 'user', 'getServices');
+        $sexybookmarks0 = unserialize( $this->getVar( 'sexybookmarks') );
+        $sexybookmarks = array();
+        foreach($sexybookmarks0 as $key => $value) {
+            $sexybookmarks[$key] = array();
+            $sexybookmarks[$key]['name'] = $value;
+            $sexybookmarks[$key]['url'] = $services[$value]['url'];
+            $sexybookmarks[$key]['title'] = $services[$value]['title'];
+        }
 
-		foreach($services as $key => $value) {
-			$services[$key]['url'] = str_replace( "{url}",$url, $value['url']);
-			$services[$key]['url'] = str_replace( "{title}",$title, $services[$key]['url'] );
-			//$services[$key]['url'] = str_replace( "&","&amp;", $services[$key]['url'] );
-
-		}
-
-		$sexybookmarks0 = unserialize( $this->getVar( 'sexybookmarks') );
-
-		$sexybookmarks = array();
-		foreach($sexybookmarks0 as $key => $value) {
-			$sexybookmarks[$key] = array();
-			$sexybookmarks[$key]['name'] = $value;
-			$sexybookmarks[$key]['url'] = $services[$value]['url'];
-			$sexybookmarks[$key]['title'] = $services[$value]['title'];
-		}
-
-		$this->view->assign('linewidth', count($sexybookmarks)*66);
-		$this->view->assign('sexybookmarks', $sexybookmarks);
-		return $this->view->fetch('plugin/sexybookmarks.tpl');
-	}
+        $this->view->assign('linewidth', count($sexybookmarks)*66);
+        $this->view->assign('sexybookmarks', $sexybookmarks);
+        return $this->view->fetch('plugin/sexybookmarks.tpl');
+    }
 
 }
-
