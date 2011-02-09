@@ -1,0 +1,11 @@
+socialise! Development Team (current status):
+----------------------------------------------------------
+Fabian Wuertz (aka phaidon)
+
+
+----------------------------------------------------------
+This module is partly based on the WordPresss plugin SexyBookmarks:
+
+ * Plugin Name: SexyBookmarks
+ * Plugin URI: http://sexybookmarks.shareaholic.com/
+ * Author URI: http://www.shareaholic.com/

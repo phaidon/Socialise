@@ -1,0 +1,2 @@
+<a href="http://twitter.com/share" class="twitter-share-button" data-url="{$url}" data-text="{$title}" data-count="{$count}">Tweet</a>
+<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>

@@ -1,0 +1,314 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: socialise!\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-02-08 21:45+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Fabian Wuertz <xadras@sidux.com>\n"
+"Language-Team: Fabian Wuertz\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Germany\n"
+"X-Poedit-Country: German\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: lib/Socialise/Version.php:17
+msgid "socialise!"
+msgstr "socialise!"
+
+#: lib/Socialise/Version.php:18
+msgid "Share content with social bookmark sites or other people"
+msgstr "Secial Web Modul"
+
+#. ! module url in lowercase and different to displayname
+#: lib/Socialise/Version.php:20
+msgid "socialise"
+msgstr "socialise"
+
+#: lib/Socialise/Api/User.php:26
+#: lib/Socialise/Api/User.php:81
+#: lib/Socialise/Api/User.php:161
+#: lib/Socialise/Api/User.php:196
+#: lib/Socialise/Api/User.php:251
+#: lib/Socialise/Api/User.php:256
+#: lib/Socialise/Api/User.php:261
+#: lib/Socialise/Api/User.php:266
+#: lib/Socialise/Api/User.php:306
+#: lib/Socialise/Api/User.php:321
+#: lib/Socialise/Api/User.php:331
+#: lib/Socialise/Api/User.php:336
+#: lib/Socialise/Api/User.php:356
+#, php-format
+msgid "Submit this to %s"
+msgstr ""
+
+#: lib/Socialise/Api/User.php:31
+#: lib/Socialise/Api/User.php:36
+#: lib/Socialise/Api/User.php:51
+#: lib/Socialise/Api/User.php:66
+#: lib/Socialise/Api/User.php:71
+#: lib/Socialise/Api/User.php:86
+#: lib/Socialise/Api/User.php:106
+#: lib/Socialise/Api/User.php:141
+#: lib/Socialise/Api/User.php:146
+#: lib/Socialise/Api/User.php:151
+#: lib/Socialise/Api/User.php:166
+#: lib/Socialise/Api/User.php:171
+#: lib/Socialise/Api/User.php:286
+#: lib/Socialise/Api/User.php:346
+#: lib/Socialise/Api/User.php:366
+#: lib/Socialise/Api/User.php:386
+#, php-format
+msgid "Share this on %s"
+msgstr ""
+
+#: lib/Socialise/Api/User.php:41
+msgid "Digg this!"
+msgstr ""
+
+#: lib/Socialise/Api/User.php:46
+#, php-format
+msgid "Post this on %s"
+msgstr ""
+
+#: lib/Socialise/Api/User.php:56
+msgid "Buzz up!"
+msgstr ""
+
+#: lib/Socialise/Api/User.php:61
+msgid "Stumble upon something good? Share it on StumbleUpon"
+msgstr ""
+
+#: lib/Socialise/Api/User.php:76
+#: lib/Socialise/Api/User.php:216
+#: lib/Socialise/Api/User.php:236
+#: lib/Socialise/Api/User.php:376
+#, php-format
+msgid "Post this to %s"
+msgstr ""
+
+#: lib/Socialise/Api/User.php:91
+msgid "Tweet This!"
+msgstr ""
+
+#: lib/Socialise/Api/User.php:96
+msgid "Email this to a friend"
+msgstr ""
+
+#: lib/Socialise/Api/User.php:100
+msgid "Comments"
+msgstr "Kommentare"
+
+#: lib/Socialise/Api/User.php:101
+msgid "Subscribe to the comments for this post"
+msgstr ""
+
+#: lib/Socialise/Api/User.php:111
+#, php-format
+msgid "Seed this on %s"
+msgstr ""
+
+#: lib/Socialise/Api/User.php:116
+#: lib/Socialise/Api/User.php:121
+#: lib/Socialise/Api/User.php:131
+#: lib/Socialise/Api/User.php:136
+#: lib/Socialise/Api/User.php:176
+#: lib/Socialise/Api/User.php:181
+#: lib/Socialise/Api/User.php:186
+#: lib/Socialise/Api/User.php:191
+#: lib/Socialise/Api/User.php:211
+#: lib/Socialise/Api/User.php:276
+#: lib/Socialise/Api/User.php:371
+#, php-format
+msgid "Add this to %s"
+msgstr ""
+
+#: lib/Socialise/Api/User.php:126
+msgid "Post on Google Buzz"
+msgstr ""
+
+#: lib/Socialise/Api/User.php:156
+#, php-format
+msgid "Mark this on %s"
+msgstr ""
+
+#: lib/Socialise/Api/User.php:170
+#: lib/Socialise/Api/User.php:175
+#: lib/Socialise/Api/User.php:180
+#: lib/Socialise/Api/User.php:185
+#: lib/Socialise/Api/User.php:190
+msgid "Russian"
+msgstr ""
+
+#: lib/Socialise/Api/User.php:201
+#, php-format
+msgid "Send this page to %s"
+msgstr ""
+
+#: lib/Socialise/Api/User.php:206
+#, php-format
+msgid "Bump this on %s"
+msgstr ""
+
+#: lib/Socialise/Api/User.php:221
+#, php-format
+msgid "Save this to %s"
+msgstr ""
+
+#: lib/Socialise/Api/User.php:226
+#, php-format
+msgid "Tip this to %s"
+msgstr ""
+
+#: lib/Socialise/Api/User.php:231
+#, php-format
+msgid "Sphinn this on %s"
+msgstr ""
+
+#: lib/Socialise/Api/User.php:241
+#, php-format
+msgid "Grind this! on %s"
+msgstr ""
+
+#: lib/Socialise/Api/User.php:246
+#, php-format
+msgid "Ping this on %s"
+msgstr ""
+
+#: lib/Socialise/Api/User.php:250
+#: lib/Socialise/Api/User.php:255
+msgid "Dutch"
+msgstr ""
+
+#: lib/Socialise/Api/User.php:271
+msgid "Blend this!"
+msgstr ""
+
+#: lib/Socialise/Api/User.php:275
+msgid "Polish"
+msgstr "Polnisch"
+
+#: lib/Socialise/Api/User.php:281
+msgid "Engage with this article!"
+msgstr ""
+
+#: lib/Socialise/Api/User.php:290
+msgid "Swedish"
+msgstr "Schwedisch"
+
+#: lib/Socialise/Api/User.php:291
+#, php-format
+msgid "Push this on %s"
+msgstr ""
+
+#: lib/Socialise/Api/User.php:295
+msgid "Japanese"
+msgstr ""
+
+#: lib/Socialise/Api/User.php:296
+#, php-format
+msgid "Bookmarks this on %s"
+msgstr ""
+
+#: lib/Socialise/Api/User.php:301
+#, php-format
+msgid "Store this link on %s"
+msgstr ""
+
+#: lib/Socialise/Api/User.php:311
+#, php-format
+msgid "Add to a lense on %s"
+msgstr ""
+
+#: lib/Socialise/Api/User.php:316
+#, php-format
+msgid "Submit this story to %s"
+msgstr ""
+
+#: lib/Socialise/Api/User.php:326
+#, php-format
+msgid "Clip this to %s"
+msgstr ""
+
+#: lib/Socialise/Api/User.php:330
+#: lib/Socialise/Api/User.php:335
+msgid "Spanish"
+msgstr "Spanisch"
+
+#: lib/Socialise/Api/User.php:341
+#, php-format
+msgid "Submit this link to %s"
+msgstr ""
+
+#: lib/Socialise/Api/User.php:351
+#, php-format
+msgid "Submit tip to %s"
+msgstr ""
+
+#: lib/Socialise/Api/User.php:361
+#, php-format
+msgid "Promote this on %s"
+msgstr ""
+
+#: lib/Socialise/Api/User.php:381
+#, php-format
+msgid "Blog this on %s"
+msgstr ""
+
+#: lib/Socialise/Handler/Like.php:32
+msgid "Please enter a facebook id, otherwise like button will not work."
+msgstr ""
+
+#: templates/admin/twitter.tpl:3
+msgid "Twitter"
+msgstr ""
+
+#: templates/admin/twitter.tpl:6
+#: templates/admin/like.tpl:6
+#: templates/admin/sexybookmarks.tpl:7
+msgid "Usage:"
+msgstr ""
+
+#: templates/admin/twitter.tpl:13
+#: templates/admin/like.tpl:13
+#: templates/admin/sexybookmarks.tpl:11
+msgid "Example for the News module:"
+msgstr ""
+
+#: templates/admin/like.tpl:3
+msgid "Facebook like button"
+msgstr ""
+
+#: templates/admin/like.tpl:20
+#: templates/admin/sexybookmarks.tpl:17
+msgid "Settings"
+msgstr ""
+
+#: templates/admin/like.tpl:25
+msgid "ID"
+msgstr "ID"
+
+#: templates/admin/like.tpl:27
+msgid "A comma-separated list of either the Facebook IDs of page administrators or a Facebook Platform application ID. At a minimum, include only your own Facebook ID."
+msgstr ""
+
+#: templates/admin/like.tpl:31
+msgid "Type"
+msgstr "Typ"
+
+#: templates/admin/like.tpl:38
+#: templates/admin/sexybookmarks.tpl:31
+msgid "Save"
+msgstr "Speichern"
+
+#: templates/admin/sexybookmarks.tpl:2
+msgid "SexyBookmarks"
+msgstr "SexyBookmarks"
+
+#: templates/admin/sexybookmarks.tpl:37
+msgid "Demo"
+msgstr "Demo"
+
