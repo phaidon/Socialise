@@ -26,17 +26,17 @@ class Socialise_Handler_Like extends Form_Handler
     */
     public function initialize(Form_View $view)
     {
-        $like = unserialize( ModUtil::getVar( 'socialise', 'like') );
+        $like = unserialize( $this->getVar('like') );
         $this->view->assign( $like);
         if( empty( $like['id'] ) ) {
             LogUtil::registerError($this->__f('Please enter a facebook id, otherwise like button will not work.'));
         }
 
-        $types = array(
+       $auths = array(
             array( 'text' => 'Person ID', 'value' => 'admins' ),
             array( 'text' => 'App ID',    'value' => 'app_id' )
         );
-        $this->view->assign( 'types', $types);
+        $this->view->assign( 'auths', $auths);
 
         return true;
     }
@@ -58,7 +58,7 @@ class Socialise_Handler_Like extends Form_Handler
 
         // load form values
         $data = $view->getValues();
-        ModUtil::setVar('socialise', 'like', serialize($data));
+        $this->setVar('like', serialize($data));
 
         return $view->redirect(ModUtil::url('socialise', 'admin','like'));
     }

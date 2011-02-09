@@ -27,7 +27,7 @@ class Socialise_Controller_Admin extends Zikula_Controller
     */
     public function main()
     {
-        return $this->like();
+        return $this->twitter();
     }
 
 

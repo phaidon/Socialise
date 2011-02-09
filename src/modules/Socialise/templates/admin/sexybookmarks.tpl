@@ -42,8 +42,4 @@
 	</fieldset>
 {/form}
 
-
-
-
-
 {include file="admin/footer.tpl"}

@@ -17,58 +17,56 @@
 class Socialise_Handler_Sexybookmarks extends Form_Handler
 {
 
-	/**
-	* Setup form.
-	*
-	* @param Form_View $view Current Form_View instance.
-	*
-	* @return boolean
-	*/
-	public function initialize(Form_View $view)
-	{
+    /**
+    * Setup form.
+    *
+    * @param Form_View $view Current Form_View instance.
+    *
+    * @return boolean
+    */
+    public function initialize(Form_View $view)
+    {
 
-		$sexybookmarks = unserialize( ModUtil::getVar('socialise', 'sexybookmarks') );
+        $sexybookmarks = unserialize( $this->getVar('sexybookmarks') );
 
-		$this->view->assign($sexybookmarks);
+        $this->view->assign($sexybookmarks);
 
-		$services = ModUtil::apiFunc('socialise', 'user', 'getServices');
+        $services = ModUtil::apiFunc('socialise', 'user', 'getServices');
 
-		$servicesAsList= array();
-		foreach($services as $key => $value) {
-			$servicesAsList[] = array('text' => $value['name'], 'value' => $key);
-		}
-		foreach($sexybookmarks as $key => $value) {
-			$activeServices[$value] = $services[$value];
-		}
+        $servicesAsList= array();
+        foreach($services as $key => $value) {
+            $servicesAsList[] = array('text' => $value['name'], 'value' => $key);
+        }
+        foreach($sexybookmarks as $key => $value) {
+            $activeServices[$value] = $services[$value];
+        }
 
-		$this->view->assign("range", range('1', '8') );
-		$this->view->assign("activeServices", $activeServices);
-		$this->view->assign("services", $servicesAsList);
+        $this->view->assign("range", range('1', '8') );
+        $this->view->assign("activeServices", $activeServices);
+        $this->view->assign("services", $servicesAsList);
 
+        return true;
+    }
 
-		return true;
-	}
+    /**
+    * Handle form submission.
+    *
+    * @param Form_View $view  Current Form_View instance.
+    * @param array     &$args Args.
+    *
+    * @return boolean
+    */
+    public function handleCommand(Form_View $view, &$args)
+    {
+        // check for valid form
+        if (!$view->isValid()) {
+            return false;
+        }
 
-	/**
-	* Handle form submission.
-	*
-	* @param Form_View $view  Current Form_View instance.
-	* @param array     &$args Args.
-	*
-	* @return boolean
-	*/
-	public function handleCommand(Form_View $view, &$args)
-	{
-		// check for valid form
-		if (!$view->isValid()) {
-			return false;
-		}
+        // load form values
+        $data = $view->getValues();
+        $this->setVar( 'sexybookmarks', serialize($data));
 
-		// load form values
-		$data = $view->getValues();
-		ModUtil::setVar('socialise', 'sexybookmarks', serialize($data));
-
-
-		return $view->redirect(ModUtil::url('socialise', 'admin','sexybookmarks'));
-	}
+        return $view->redirect(ModUtil::url('socialise', 'admin','sexybookmarks'));
+    }
 }

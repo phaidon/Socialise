@@ -90,7 +90,7 @@ class Socialise_Controller_User extends Zikula_Controller
         );
 
         # meta tages
-        PageUtil::addVar('rawtext', '<meta property="fb:' . $like['type'] . '" content="' . $like['id'] . '" />');
+        PageUtil::addVar('rawtext', '<meta property="fb:' . $like['auth'] . '" content="' . $like['id'] . '" />');
 
         foreach( $metas as $key => $value ) {
             PageUtil::addVar('rawtext', '<meta property="og:' . $key . '" content="' . $value . '" />' );
