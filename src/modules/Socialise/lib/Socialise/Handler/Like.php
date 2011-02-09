@@ -1,66 +1,65 @@
 <?php
 
 /**
-* socialise
-*
-* @copyright Fabian Wuertz
-* @link http://code.zikula.org/socialise
-* @version $Id$
-* @license See license.txt
-*/
-
-/**
- * Form handler for like
+ * Copyright socialise Team 2011
+ *
+ * This work is contributed to the Zikula Foundation under one or more
+ * Contributor Agreements and licensed to You under the following license:
+ *
+ * @license GNU/LGPLv3 (or at your option, any later version).
+ * @package socialise
+ * @link http://code.zikula.org/socialise
+ *
+ * Please see the NOTICE file distributed with this source code for further
+ * information regarding copyright and licensing.
  */
+
 class Socialise_Handler_Like extends Form_Handler
 {
 
-	/**
-	* Setup form.
-	*
-	* @param Form_View $view Current Form_View instance.
-	*
-	* @return boolean
-	*/
-	public function initialize(Form_View $view)
-	{
-		
+    /**
+    * Setup form.
+    *
+    * @param Form_View $view Current Form_View instance.
+    *
+    * @return boolean
+    */
+    public function initialize(Form_View $view)
+    {
+        $like = unserialize( ModUtil::getVar( 'socialise', 'like') );
+        $this->view->assign( $like);
+        if( empty( $like['id'] ) ) {
+            LogUtil::registerError($this->__f('Please enter a facebook id, otherwise like button will not work.'));
+        }
 
-		$like = unserialize( ModUtil::getVar( 'socialise', 'like' ) );
-		$this->view->assign( $like);
-		if( empty( $like['id'] ) ) {
-			LogUtil::registerError($this->__f('Please enter a facebook id, otherwise like button will not work.'));
-		}
+        $types = array(
+            array( 'text' => 'Person ID', 'value' => 'admins' ),
+            array( 'text' => 'App ID',    'value' => 'app_id' )
+        );
+        $this->view->assign( 'types', $types);
 
-		$types = array(
-			array( 'text' => 'Person ID', 'value' => 'admins' ),
-			array( 'text' => 'App ID',    'value' => 'app_id' )
-		);
-		$this->view->assign( 'types', $types);
+        return true;
+    }
 
-		return true;
-	}
+    /**
+    * Handle form submission.
+    *
+    * @param Form_View $view  Current Form_View instance.
+    * @param array     &$args Args.
+    *
+    * @return boolean
+    */
+    public function handleCommand(Form_View $view, &$args)
+    {
+        // check for valid form
+        if (!$view->isValid()) {
+            return false;
+        }
 
-	/**
-	* Handle form submission.
-	*
-	* @param Form_View $view  Current Form_View instance.
-	* @param array     &$args Args.
-	*
-	* @return boolean
-	*/
-	public function handleCommand(Form_View $view, &$args)
-	{
-		// check for valid form
-		if (!$view->isValid()) {
-			return false;
-		}
+        // load form values
+        $data = $view->getValues();
+        ModUtil::setVar('socialise', 'like', serialize($data));
 
-		// load form values
-		$data = $view->getValues();
-		ModUtil::setVar('socialise', 'like', serialize($data));
-
-		return $view->redirect(ModUtil::url('socialise', 'admin','like'));
-	}
+        return $view->redirect(ModUtil::url('socialise', 'admin','like'));
+    }
 }
-

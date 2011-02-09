@@ -1,13 +1,18 @@
 <?php
 
 /**
-* socialise
-*
-* @copyright Fabian Wuertz
-* @link http://code.zikula.org/socialise
-* @version $Id$
-* @license See license.txt
-*/
+ * Copyright socialise Team 2011
+ *
+ * This work is contributed to the Zikula Foundation under one or more
+ * Contributor Agreements and licensed to You under the following license:
+ *
+ * @license GNU/LGPLv3 (or at your option, any later version).
+ * @package socialise
+ * @link http://code.zikula.org/socialise
+ *
+ * Please see the NOTICE file distributed with this source code for further
+ * information regarding copyright and licensing.
+ */
 
 class Socialise_Handler_Sexybookmarks extends Form_Handler
 {
