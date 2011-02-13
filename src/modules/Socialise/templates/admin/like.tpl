@@ -1,9 +1,5 @@
 {include file="admin/header.tpl"}
-
 <h2>{gt text='Facebook like button'}</h2>
-{include file="admin/header.tpl"}
-<h2>{gt text='like'}</h2>
-
 
 <p class="z-informationmsg">
     <b>{gt text='Usage:'}</b><br />

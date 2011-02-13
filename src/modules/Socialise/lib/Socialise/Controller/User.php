@@ -141,4 +141,31 @@ class Socialise_Controller_User extends Zikula_Controller
         return $this->view->fetch('plugin/sexybookmarks.tpl');
     }
 
+
+    public function sharethis($args)
+    {
+        extract($args);
+        unset($args);
+
+        # url
+        if(empty($url)) {
+            $url = ModUtil::apiFunc('socialise', 'user', 'currentUrl');
+        }
+
+        static $onceonly = false;
+
+        $this->view->assign('url', urlencode($url) );
+        $this->view->assign('title', urlencode($title));
+        $this->view->assign('id', $id);
+
+       // stuff to do once and once only....
+        if (!$onceonly) {
+            $onceonly = true;
+            PageUtil::addVar('footer', $this->view->fetch('plugin/sharethis_footer.tpl'));
+        }
+
+       // stuff to do for each item
+        return $this->view->fetch('plugin/sharethis.tpl');
+    }
+
 }

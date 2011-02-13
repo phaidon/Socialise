@@ -30,6 +30,16 @@ class Socialise_Controller_Admin extends Zikula_Controller
         return $this->twitter();
     }
 
+    public function twitter()
+    {
+        if (!SecurityUtil::checkPermission('socialise::', "::", ACCESS_ADMIN)) {
+              return LogUtil::registerPermissionError();
+        }
+
+        return $this->view->fetch('admin/twitter.tpl');
+
+    }
+
 
     /**
     * SexyBookmarks administration function
@@ -50,16 +60,6 @@ class Socialise_Controller_Admin extends Zikula_Controller
     }
 
 
-    public function twitter()
-    {
-        if (!SecurityUtil::checkPermission('socialise::', "::", ACCESS_ADMIN)) {
-              return LogUtil::registerPermissionError();
-        }
-
-        return $this->view->fetch('admin/twitter.tpl');
-
-    }
-
     public function like()
     {
         if (!SecurityUtil::checkPermission('socialise::', "::", ACCESS_ADMIN)) {
@@ -68,6 +68,17 @@ class Socialise_Controller_Admin extends Zikula_Controller
 
         $form = FormUtil::newForm('socialise');
         return $form->execute('admin/like.tpl', new Socialise_Handler_Like() );
+
+    }
+
+
+    public function sharethis()
+    {
+        if (!SecurityUtil::checkPermission('socialise::', "::", ACCESS_ADMIN)) {
+              return LogUtil::registerPermissionError();
+        }
+
+        return $this->view->fetch('admin/sharethis.tpl');
 
     }
 }
