@@ -14,7 +14,7 @@
  * information regarding copyright and licensing.
  */
 
-class Socialise_Handler_Sexybookmarks extends Form_Handler
+class Socialise_Handler_Sexybookmarks extends Zikula_Form_Handler
 {
 
     /**
@@ -24,7 +24,7 @@ class Socialise_Handler_Sexybookmarks extends Form_Handler
     *
     * @return boolean
     */
-    public function initialize(Form_View $view)
+    public function initialize(Zikula_Form_View $view)
     {
 
         $sexybookmarks = unserialize( $this->getVar('sexybookmarks') );
@@ -56,7 +56,7 @@ class Socialise_Handler_Sexybookmarks extends Form_Handler
     *
     * @return boolean
     */
-    public function handleCommand(Form_View $view, &$args)
+    public function handleCommand(Zikula_Form_View $view, &$args)
     {
         // check for valid form
         if (!$view->isValid()) {

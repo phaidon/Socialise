@@ -14,7 +14,7 @@
  * information regarding copyright and licensing.
  */
 
-class Socialise_Handler_Like extends Form_Handler
+class Socialise_Handler_Like extends Zikula_Form_Handler
 {
 
     /**
@@ -24,7 +24,7 @@ class Socialise_Handler_Like extends Form_Handler
     *
     * @return boolean
     */
-    public function initialize(Form_View $view)
+    public function initialize(Zikula_Form_View $view)
     {
         $like = unserialize( $this->getVar('like') );
         $this->view->assign( $like);
@@ -49,7 +49,7 @@ class Socialise_Handler_Like extends Form_Handler
     *
     * @return boolean
     */
-    public function handleCommand(Form_View $view, &$args)
+    public function handleCommand(Zikula_Form_View $view, &$args)
     {
         // check for valid form
         if (!$view->isValid()) {
