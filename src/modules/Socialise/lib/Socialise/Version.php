@@ -28,4 +28,3 @@ class Socialise_Version extends Zikula_Version
         return $meta;
     }
 }
-

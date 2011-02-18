@@ -55,8 +55,27 @@ class Socialise_Controller_Admin extends Zikula_Controller
               return LogUtil::registerPermissionError();
         }
 
-        $form = FormUtil::newForm('socialise');
-        return $form->execute('admin/sexybookmarks.tpl', new Socialise_Handler_Sexybookmarks() );
+        $sexybookmarks = unserialize( $this->getVar('sexybookmarks') );
+        $this->view->assign($sexybookmarks);
+
+        $services = ModUtil::apiFunc('socialise', 'user', 'getServices');
+        $activeServices = array();
+        foreach($sexybookmarks as $key => $value) {
+            $activeServices[$value] = $services[$value];
+        }
+        $inactiveServices = array();
+        foreach($services as $key => $value) {
+            if(!in_array($key, $sexybookmarks) ) {
+                $inactiveServices[$key] = $value;
+            }
+        }
+        $this->view->assign("activeServices", $activeServices);
+        $this->view->assign("inactiveServices", $inactiveServices);
+
+        return $this->view->fetch('admin/sexybookmarks.tpl');
+
+        /*($form = FormUtil::newForm('socialise');
+        return $form->execute('admin/sexybookmarks_nojs.tpl', new Socialise_Handler_Sexybookmarks() );*/
     }
 
 

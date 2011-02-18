@@ -26,21 +26,18 @@ class Socialise_Handler_Sexybookmarks extends Zikula_Form_Handler
     */
     public function initialize(Zikula_Form_View $view)
     {
-
         $sexybookmarks = unserialize( $this->getVar('sexybookmarks') );
-
         $this->view->assign($sexybookmarks);
 
         $services = ModUtil::apiFunc('socialise', 'user', 'getServices');
-
         $servicesAsList= array();
         foreach($services as $key => $value) {
             $servicesAsList[] = array('text' => $value['name'], 'value' => $key);
         }
+        $activeServices = array();
         foreach($sexybookmarks as $key => $value) {
             $activeServices[$value] = $services[$value];
         }
-
         $this->view->assign("range", range('1', '8') );
         $this->view->assign("activeServices", $activeServices);
         $this->view->assign("services", $servicesAsList);
