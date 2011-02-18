@@ -55,7 +55,7 @@ class Socialise_Controller_User extends Zikula_Controller
         # http://developers.facebook.com/docs/reference/plugins/like/
 
         $like = unserialize( $this->getVar( 'like' ) );
-        if(empty($like['id'])) {
+        if(empty($like['id']) or empty($like['auth']) ) {
             return '';
         }
 
@@ -90,7 +90,7 @@ class Socialise_Controller_User extends Zikula_Controller
         );
 
         # meta tages
-        PageUtil::addVar('rawtext', '<meta property="fb:' . $like['auth'] . '" content="' . $like['id'] . '" />');
+        PageUtil::addVar('rawtext', '<meta property="fb:'.$like['auth'].'" content="'.$like['id'].'" />');
 
         foreach( $metas as $key => $value ) {
             PageUtil::addVar('rawtext', '<meta property="og:' . $key . '" content="' . $value . '" />' );

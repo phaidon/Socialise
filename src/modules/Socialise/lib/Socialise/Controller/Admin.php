@@ -74,7 +74,7 @@ class Socialise_Controller_Admin extends Zikula_Controller
 
         return $this->view->fetch('admin/sexybookmarks.tpl');
 
-        /*($form = FormUtil::newForm('socialise');
+        /*($form = FormUtil::newForm('socialise', $this);
         return $form->execute('admin/sexybookmarks_nojs.tpl', new Socialise_Handler_Sexybookmarks() );*/
     }
 
@@ -85,7 +85,7 @@ class Socialise_Controller_Admin extends Zikula_Controller
               return LogUtil::registerPermissionError();
         }
 
-        $form = FormUtil::newForm('socialise');
+        $form = FormUtil::newForm('socialise', $this);
         return $form->execute('admin/like.tpl', new Socialise_Handler_Like() );
 
     }
