@@ -78,4 +78,3 @@ class Socialise_Installer extends Zikula_Installer
         return true;
     }
 }
-

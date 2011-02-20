@@ -1,4 +1,5 @@
 {include file="admin/header.tpl"}
+<div class="z-adminpageicon">{icon type="config" size="large"}</div>
 <h2>{gt text='Facebook like button'}</h2>
 
 <p class="z-informationmsg">

@@ -30,9 +30,26 @@ class Socialise_Api_Admin extends Zikula_Api
     {
         $links = array();
         if (SecurityUtil::checkPermission('socialise::', '::', ACCESS_ADMIN)) {
-            $links[] = array('url' => ModUtil::url('socialise', 'admin', 'twitter'), 'text' => "Twitter");
-            $links[] = array('url' => ModUtil::url('socialise', 'admin', 'like'), 'text' => "Facebook like button");
-            $links[] = array('url' => ModUtil::url('socialise', 'admin', 'sexybookmarks'), 'text' => "SexyBookmarks");
+            $links[] = array(
+                'url' => ModUtil::url('socialise', 'admin', 'twitter'), 
+                'text' => 'Twitter',
+                'class' => 'z-icon-es-twitter'
+            );
+            $links[] = array(
+                'url' => ModUtil::url('socialise', 'admin', 'like'),
+                'text' => 'Facebook like button',
+                'class' => 'z-icon-es-facebook'
+            );
+            $links[] = array(
+                'url' => ModUtil::url('socialise', 'admin', 'sexybookmarks'),
+                'text' => 'SexyBookmarks',
+                'class' => 'z-icon-es-sexybookmarks'
+            );
+            $links[] = array(
+                'url' => ModUtil::url('socialise', 'admin', 'sharethis'),
+                'text' => 'ShareThis',
+                'class' => 'z-icon-es-sharethis'
+            );
         }
         return $links;
     }

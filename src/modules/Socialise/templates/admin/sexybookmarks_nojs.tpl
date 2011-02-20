@@ -1,4 +1,5 @@
 {include file="admin/header.tpl"}
+<div class="z-adminpageicon">{icon type="config" size="large"}</div>
 <h2>{gt text='SexyBookmarks'}</h2>
 
 {pageaddvar name='stylesheet' value='modules/Socialise/style/sexybookmarks-admin.css'}
