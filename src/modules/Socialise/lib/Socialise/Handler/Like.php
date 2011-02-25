@@ -29,7 +29,7 @@ class Socialise_Handler_Like extends Zikula_Form_Handler
         $like = unserialize( $this->getVar('like') );
         $this->view->assign( $like);
         if( empty( $like['id'] ) ) {
-            LogUtil::registerError($this->__f('Please enter a facebook id, otherwise like button will not work.'));
+            LogUtil::registerError($this->__('Please enter a facebook id, otherwise like button will not work.'));
         }
 
        $auths = array(
