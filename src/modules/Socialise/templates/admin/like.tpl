@@ -27,7 +27,7 @@
         <div class="z-formrow">
             {formlabel for="id" __text="ID"}
             {formtextinput id="id" mandatory=true maxLength=255}
-            <em class="z-formnote" z-sub>{gt text="A comma-separated list of either the Facebook IDs of page administrators or a Facebook Platform application ID. At a minimum, include only your own Facebook ID."}</em>
+            <em class="z-formnote z-sub">{gt text="A comma-separated list of either the Facebook IDs of page administrators or a Facebook Platform application ID. At a minimum, include only your own Facebook ID."}</em>
         </div>
         
         <div class="z-formrow">
