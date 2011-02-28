@@ -9,7 +9,7 @@
         <li>{gt text='%implementation%: The XFBML version is more versatile, but requires use of the JavaScript SDK.'}</li>
         <li>{gt text='%url%: the URL to like. Normally this parameter is needless!'}</li>
     </ul>
-    {assign var='facebookurl' value='ttp://developers.facebook.com/docs/reference/plugins/like/'}
+    {assign var='facebookurl' value='http://developers.facebook.com/docs/reference/plugins/like/'}
     <p>{gt text="You can find more informations and visuals examples <a href='%s'>here</a>." tag1=$facebookurl}</p>
     <hr />
     <dl>
