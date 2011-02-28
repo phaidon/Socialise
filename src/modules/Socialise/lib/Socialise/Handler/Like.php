@@ -51,6 +51,11 @@ class Socialise_Handler_Like extends Zikula_Form_Handler
     */
     public function handleCommand(Zikula_Form_View $view, &$args)
     {
+        if ($args['commandName'] == 'cancel') {
+            $url = ModUtil::url('Socialise', 'admin', 'like' );
+            return $view->redirect($url);
+        }
+        
         // check for valid form
         if (!$view->isValid()) {
             return false;

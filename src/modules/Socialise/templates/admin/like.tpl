@@ -34,10 +34,14 @@
             {formlabel for="auth" __text="Type"}
             {formdropdownlist id="auth" items=$auths}
         </div>
+
+        <div class="z-formbuttons z-buttons">
+            {formbutton class="z-bt-ok" commandName="save" __text="Save"}
+            {formbutton class="z-bt-cancel" commandName="cancel" __text="Cancel"}
+        </div>
+
     </fieldset>
-    <div class="z-formbuttons z-buttons">
-        {formbutton id="create" commandName="create" __text="Save" class="z-bt-ok"}
-    </div>
+
 {/form}
 
 {include file="admin/footer.tpl"}
