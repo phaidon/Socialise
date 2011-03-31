@@ -15,7 +15,7 @@
  */
 
 
-class Socialise_Installer extends Zikula_Installer
+class Socialise_Installer extends Zikula_AbstractInstaller
 {
     /**
     * initialise the template module

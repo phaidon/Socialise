@@ -22,6 +22,6 @@ class Socialise_Util
             return;
         }
         $view = $event->getSubject();
-        $view->addPluginDir("modules/$modinfo[directory]/templates/plugins");
+        $view->addPluginDir("modules/".$modinfo['directory']."/templates/plugins");
     }
-} 
+}

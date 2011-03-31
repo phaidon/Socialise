@@ -14,7 +14,7 @@
  * information regarding copyright and licensing.
  */
 
-class Socialise_Api_User extends Zikula_Api
+class Socialise_Api_User extends Zikula_AbstractApi
 {
 
     public function currentUrl()

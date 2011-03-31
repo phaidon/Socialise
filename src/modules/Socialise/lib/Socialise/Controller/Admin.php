@@ -14,7 +14,7 @@
  * information regarding copyright and licensing.
  */
 
-class Socialise_Controller_Admin extends Zikula_Controller
+class Socialise_Controller_Admin extends Zikula_AbstractController
 {
 
     /**
@@ -32,9 +32,10 @@ class Socialise_Controller_Admin extends Zikula_Controller
 
     public function twitter()
     {
-        if (!SecurityUtil::checkPermission('socialise::', "::", ACCESS_ADMIN)) {
-              return LogUtil::registerPermissionError();
-        }
+        $this->throwForbiddenUnless(
+            SecurityUtil::checkPermission('socialise::', '::', ACCESS_ADMIN),
+            LogUtil::getErrorMsgPermission()
+        );
 
         return $this->view->fetch('admin/twitter.tpl');
 
@@ -51,9 +52,6 @@ class Socialise_Controller_Admin extends Zikula_Controller
     */
     public function sexybookmarks()
     {
-        if (!SecurityUtil::checkPermission('socialise::', "::", ACCESS_ADMIN)) {
-              return LogUtil::registerPermissionError();
-        }
 
         $sexybookmarks = unserialize( $this->getVar('sexybookmarks') );
         $this->view->assign($sexybookmarks);
@@ -81,10 +79,6 @@ class Socialise_Controller_Admin extends Zikula_Controller
 
     public function like()
     {
-        if (!SecurityUtil::checkPermission('socialise::', "::", ACCESS_ADMIN)) {
-              return LogUtil::registerPermissionError();
-        }
-
         $form = FormUtil::newForm('socialise', $this);
         return $form->execute('admin/like.tpl', new Socialise_Handler_Like() );
 
@@ -93,9 +87,10 @@ class Socialise_Controller_Admin extends Zikula_Controller
 
     public function sharethis()
     {
-        if (!SecurityUtil::checkPermission('socialise::', "::", ACCESS_ADMIN)) {
-              return LogUtil::registerPermissionError();
-        }
+        $this->throwForbiddenUnless(
+            SecurityUtil::checkPermission('socialise::', '::', ACCESS_ADMIN),
+            LogUtil::getErrorMsgPermission()
+        );
 
         return $this->view->fetch('admin/sharethis.tpl');
 

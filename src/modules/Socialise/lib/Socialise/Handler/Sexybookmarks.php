@@ -14,7 +14,7 @@
  * information regarding copyright and licensing.
  */
 
-class Socialise_Handler_Sexybookmarks extends Zikula_Form_Handler
+class Socialise_Handler_Sexybookmarks extends Zikula_Form_AbstractHandler
 {
 
     /**
@@ -26,6 +26,10 @@ class Socialise_Handler_Sexybookmarks extends Zikula_Form_Handler
     */
     public function initialize(Zikula_Form_View $view)
     {
+        if (!SecurityUtil::checkPermission('socialise::', '::', ACCESS_ADMIN)) {
+            throw new Zikula_Exception_Forbidden(LogUtil::getErrorMsgPermission());
+        }
+        
         $sexybookmarks = unserialize( $this->getVar('sexybookmarks') );
         $this->view->assign($sexybookmarks);
 

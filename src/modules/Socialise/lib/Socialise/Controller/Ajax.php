@@ -14,7 +14,7 @@
  * information regarding copyright and licensing.
  */
 
-class Socialise_Controller_Ajax extends Zikula_Controller
+class Socialise_Controller_Ajax extends Zikula_AbstractController
 {
     public function _postSetup()
     {
@@ -26,15 +26,18 @@ class Socialise_Controller_Ajax extends Zikula_Controller
     */
     public function updateServices()
     {
-        if (!SecurityUtil::checkPermission('Socialise::', '::', ACCESS_ADMIN)) {
-            return AjaxUtil::error(LogUtil::registerPermissionError(null,true));
-        }
+        $this->throwForbiddenUnless(
+            SecurityUtil::checkPermission('socialise::', '::', ACCESS_ADMIN),
+            AjaxUtil::error(LogUtil::registerPermissionError(null,true))
+        );
+
+      
         $services = FormUtil::getPassedValue('services', -1, 'GET');
         $services = split(',', $services);
 
         if ($services == -1) {
             return AjaxUtil::error(LogUtil::registerError($this->__('No services passed.')));
         }
-        $this->setVar( 'sexybookmarks', serialize($services));
+        $this->setVar('sexybookmarks', serialize($services));
     }
 }

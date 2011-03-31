@@ -14,7 +14,7 @@
  * information regarding copyright and licensing.
  */
 
-class Socialise_Controller_User extends Zikula_Controller
+class Socialise_Controller_User extends Zikula_AbstractController
 {
 
     /**

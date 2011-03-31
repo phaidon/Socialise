@@ -14,7 +14,7 @@
  * information regarding copyright and licensing.
  */
 
-class Socialise_Api_Admin extends Zikula_Api 
+class Socialise_Api_Admin extends Zikula_AbstractApi 
 {
     //-----------------------------------------------------------//
     //-- Admin panel menu ---------------------------------------//

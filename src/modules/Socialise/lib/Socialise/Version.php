@@ -14,7 +14,7 @@
  * information regarding copyright and licensing.
  */
 
-class Socialise_Version extends Zikula_Version 
+class Socialise_Version extends Zikula_AbstractVersion 
 {
     public function getMetaData()
     {
