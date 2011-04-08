@@ -1,4 +1,2 @@
-<a href="{$url}" onclick="akst_share('{$id}', '{$url}', '{$title}'); return false;" id="akst_link_{$id}" rel="nofollow">
-    <em>{gt text="Share it!"}</em>
-</a>
 
+<a href="javascript:void()" onclick="akst_share('{$plugin.id|urlencode}', '{$plugin.url|urlencode}', '{$plugin.title|urlencode}'); return false;" id="akst_link_{$plugin.id}" rel="nofollow">{$plugin.text}</a>

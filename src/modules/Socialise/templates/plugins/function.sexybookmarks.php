@@ -1,21 +1,25 @@
 <?php
 /**
- * Smarty function to display a sexybookmarks menu
+ * Smarty plugin to display a sexybookmarks menu.
  *
- * Available parameters:
+ * Available parameters
  *
- * url - The URL of the item to submit to the social bookmarking site(s)
- * title - The title of the item to submit to the social bookmarking site(s)
+ *   url: The URL of the item to submit to the social bookmarking site(s)
+ *   title: The title of the item to submit to the social bookmarking site(s)
  *
- * Example (for the News module)
- * {sexybookmarks url=$links.permalink title=$info.title}
+ * Examples
+ *   For the News module: {sexybookmarks url=$links.permalink title=$info.title}
+ *   For a Clip publication: {sexybookmarks url=$returnurl title=$pubdata.core_title}
  *
- * @link        http://code.zikula.org/socialise
- * @param       array       $params      All attributes passed to this function from the template
- * @param       object      &$smarty     Reference to the Smarty object
- * @return      string      the YIQ display
+ * @author Mark West
+ * @since  08/02/2007
+ * @link   http://www.markwest.me.uk/
+ * @param  array  $params  All attributes passed to this function from the template.
+ * @param  object &$smarty Reference to the Smarty object.
+ *
+ * @return string HTML output.
  */
 function smarty_function_sexybookmarks($params, &$smarty)
 {
-    return ModUtil::func('socialise', 'user', 'sexybookmarks', $params);
+    return ModUtil::apiFunc('Socialise', 'plugin', 'sexybookmarks', $params);
 }

@@ -13,7 +13,7 @@
  * information regarding copyright and licensing.
  */
 
-class Socialise_Handler_Sexybookmarks extends Zikula_Form_AbstractHandler
+class Socialise_Handler_Keys extends Zikula_Form_AbstractHandler
 {
     /**
      * Setup form.
@@ -24,23 +24,8 @@ class Socialise_Handler_Sexybookmarks extends Zikula_Form_AbstractHandler
      */
     public function initialize(Zikula_Form_View $view)
     {
-        $sexybookmarks = $this->getVar('sexybookmarks');
-
-        $services = ModUtil::apiFunc('socialise', 'user', 'getServices');
-        $servicesAsList= array();
-        foreach($services as $k => $value) {
-            $servicesAsList[] = array('value' => $k, 'text' => $value['name']);
-        }
-
-        $activeServices = array();
-        foreach($sexybookmarks as $k) {
-            $activeServices[$k] = $services[$k];
-        }
-
-        $this->view->assign($sexybookmarks)
-                   ->assign('range', range('1', '8'))
-                   ->assign('activeServices', $activeServices)
-                   ->assign('services', $servicesAsList);
+        $this->view->assign('indexes', $this->getVar('services'))
+                   ->assign($this->getVar('keys'));
 
         return true;
     }
@@ -55,15 +40,18 @@ class Socialise_Handler_Sexybookmarks extends Zikula_Form_AbstractHandler
      */
     public function handleCommand(Zikula_Form_View $view, &$args)
     {
+        if ($args['commandName'] == 'cancel') {
+            return $view->redirect(ModUtil::url('Socialise', 'admin', 'modifyconfig'));
+        }
+
         // check for valid form
         if (!$view->isValid()) {
             return false;
         }
 
-        // load form values
-        $data = $view->getValues();
-        $this->setVar('sexybookmarks', $data);
+        // set the form values
+        $this->setVar('keys', $view->getValues());
 
-        return $view->redirect(ModUtil::url('Socialise', 'admin', 'sexybookmarks', array('nojs' => 1)));
+        return $view->redirect(ModUtil::url('Socialise', 'admin', 'modifyconfig'));
     }
 }

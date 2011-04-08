@@ -16,8 +16,9 @@
 
 class Socialise_Util
 {
-    public static function registerPluginDir(Zikula_Event $event) {
-        $modinfo = ModUtil::getInfoFromName('socialise');
+    public static function registerPluginDir(Zikula_Event $event)
+    {
+        $modinfo = ModUtil::getInfoFromName('Socialise');
         if (!$modinfo) {
             return;
         }

@@ -19,12 +19,12 @@ class Socialise_Version extends Zikula_AbstractVersion
     public function getMetaData()
     {
         $meta = array();
-        $meta['displayname']    = $this->__('socialise!');
-        $meta['description']    = $this->__('Share content with social websites like Facebook and Twitter');
+        $meta['displayname']    = $this->__('Socialise!');
+        $meta['description']    = $this->__('Share content with social websites like Facebook and Twitter and handle your site Keys.');
         //! module url in lowercase and different to displayname
         $meta['url']            = $this->__('socialise');
-        $meta['version']          = '0.1.0';
-        $meta['securityschema']   = array('socialise::' => '::');
+        $meta['version']        = '0.2.0';
+        $meta['securityschema'] = array('socialise::' => '::');
         return $meta;
     }
 }

@@ -1,5 +1,12 @@
 Changelog 
 ---------
 
-0.1
+    0.2
+        * Major reorder and expansion of the plugin capabilities.
+        * Modvars changed to store site-wide service Keys
+          and to be serialized/unserialized by the core only.
+        * User-side stylesheet merged in only one file.
+        * ShareThis popup positioning improved (TODO bottom).
+
+    0.1
 	* Initial release

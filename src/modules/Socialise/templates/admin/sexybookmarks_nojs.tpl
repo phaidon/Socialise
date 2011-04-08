@@ -1,47 +1,56 @@
-{include file="admin/header.tpl"}
-<div class="z-adminpageicon">{icon type="config" size="large"}</div>
-<h2>{gt text='SexyBookmarks'}</h2>
+{pageaddvar name='stylesheet' value='modules/Socialise/style/admin_sexybookmarks.css'}
 
-{pageaddvar name='stylesheet' value='modules/Socialise/style/sexybookmarks-admin.css'}
+{include file='admin/header.tpl'}
 
-<div class="z-informationmsg">
-    <p style="font-size:1.3em;"><strong>{gt text='Usage:'}</strong> {'{'}sexybookmarks title=%title% url=%url%}</p>
-    <ul>
-        <li>{gt text='%title%: the title of the page the buttons are on.'}</li>
-        <li>{gt text='%url%: the URL to like. Normally this parameter is needless!'}</li>
-    </ul>
-    <hr />
-    <dl>
-        <dt><strong>{gt text='Example for the News module:'}</strong></dt>
-        <dd>{'{'}sexybookmarks title=$info.title}</dd>
-    </dl>
-</div>
+<div class="z-admincontainer">
+    <div class="z-adminpageicon">{icon type='config' size='large'}</div>
+    <h2>{gt text='SexyBookmarks'}</h2>
 
-{form cssClass="z-form"}
-<fieldset>
-    <legend>{gt text="Settings"}</legend>
+    <div class="z-informationmsg socialize-docblock">
+        <p style="font-size:1.3em;"><strong>{gt text='Usages:'}</strong>
+            <br />
+            {ldelim}sexybookmarks url=$url title=$title{rdelim}
+        </p>
+        <ul>
+            <li>{gt text='url: The URL to submit. By default it takes the current URL.'}</li>
+            <li>{gt text='title: The title of the page the button is on.'}</li>
+        </ul>
 
-    {formvalidationsummary}
-
-    {foreach item=i from=$range}
-    <div class="z-formrow">
-        {formlabel for=$i text="Service $i"}
-        {formdropdownlist id=$i items=$services}
+        <hr />
+        <strong style="font-size:1.3em;">{gt text='Examples:'}</strong>
+        <dl>
+            <dt><strong>{gt text='%s module:' tag1='News'}</strong></dt>
+            <dd>{ldelim}sexybookmarks url=$links.permalink title=$info.title{rdelim}</dd>
+            <dt><strong>{gt text='%s module:' tag1='Clip'}</strong></dt>
+            <dd>{ldelim}sexybookmarks url=$returnurl title=$pubdata.core_title{rdelim}</dd>
+        </dl>
     </div>
-    {/foreach}
-</fieldset>
 
-<div class="z-formbuttons z-buttons">
-    {formbutton id="create" commandName="create" __text="Save" class="z-bt-ok"}
+    {form cssClass='z-form'}
+    <fieldset>
+        <legend>{gt text='Settings'}</legend>
+
+        {formvalidationsummary}
+
+        {foreach from=$range item='s'}
+        <div class="z-formrow">
+            {gt text='Service %s' tag1=$s assign='labeltext'}
+            {formlabel for=$s text=$labeltext}
+            {formdropdownlist id=$i items=$services}
+        </div>
+        {/foreach}
+    </fieldset>
+
+    <div class="z-formbuttons z-buttons">
+        {formbutton id='create' commandName='create' __text='Save' class='z-bt-ok'}
+    </div>
+
+    <fieldset>
+        <legend>{gt text='Demo'}</legend>
+
+        {foreach from=$activeServices key='k' item='service'}
+        <div id="item_{$k}" class="lineitem sexy-{$k}" title="{$service.name}"></div>
+        {/foreach}
+    </fieldset>
+    {/form}
 </div>
-
-<fieldset>
-    <legend>{gt text="Demo"}</legend>
-
-    {foreach item=service key=k from=$activeServices}
-    <div id="item_{$k}" class="lineitem sexy-{$k}" title="{$service.name}"></div>
-    {/foreach}
-</fieldset>
-{/form}
-
-{include file="admin/footer.tpl"}

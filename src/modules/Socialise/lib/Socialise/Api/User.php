@@ -16,21 +16,31 @@
 
 class Socialise_Api_User extends Zikula_AbstractApi
 {
-
-    public function currentUrl()
+    public function getKeys($args=array())
     {
-        $url  = System::getBaseURL();
-        $url .= substr( $_SERVER[ 'REQUEST_URI' ], 1 );
-        return $url;
+        $keys = $this->getVar('keys');
+
+        if (isset($args['service'])) {
+            if (isset($keys[$args['service']])) {
+                return $keys[$args['service']];
+            }
+            return false;
+        }
+
+        return $keys;
     }
 
+    public function getCurrentUrl()
+    {
+        return System::getBaseURL() . substr(System::serverGetVar('REQUEST_URI'), 1);
+    }
 
     /**
-    * Get available services
-    *
-    * @author Fabian Wuertz
-    * @return array array of services
-    */
+     * Get available services.
+     *
+     * @author Fabian Wuertz
+     * @return array Array of services.
+     */
     public function getServices()
     {
         $services = array(
@@ -102,7 +112,7 @@ class Socialise_Api_User extends Zikula_AbstractApi
             'twitter'=>array(
                 'name'  => 'Twitter',
                 'title' => $this->__('Tweet This!'),
-                'url'   => 'http://twitter.com/home?status=',
+                'url'   => 'http://twitter.com/home?status=', // FIXME?
             ),
             'mail'=>array(
                 'name'  => 'Email',
@@ -456,6 +466,7 @@ class Socialise_Api_User extends Zikula_AbstractApi
             ),*/
         );
         ksort($services); //sort array by keys
+
         return $services;
     }
 }

@@ -1,8 +1,8 @@
-{ajaxheader modname=Socialise filename='sharethis.js'}
-{pageaddvar name='stylesheet' value='modules/Socialise/style/sharethis.css'}
+{pageaddvar name='stylesheet' value='modules/Socialise/style/style.css'}
+{ajaxheader modname='Socialise' filename='sharethis.js'}
 
 <div id="akst_form">
-    <a href="javascript:void($('akst_form').style.display='none');" class="akst_close">{gt text='Close'}</a>
+    <a href="javascript:void($('akst_form').hide());" class="akst_close">{gt text='Close'}</a>
     <div class="clear"></div>
     <div id="akst_social">
         <ul>

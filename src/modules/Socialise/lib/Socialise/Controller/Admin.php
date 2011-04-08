@@ -16,83 +16,111 @@
 
 class Socialise_Controller_Admin extends Zikula_AbstractController
 {
-
     /**
-    * Return to index page
-    *
-    * This is the default function called when EZComments is called
-    * as a module. As we do not intend to output anything, we just
-    * redirect to the start page.
-    *
-    */
+     * Main config screen.
+     */
     public function main()
     {
-        return $this->twitter();
+        return $this->modifyconfig();
     }
 
+    public function modifyconfig()
+    {
+        $this->throwForbiddenUnless(
+            SecurityUtil::checkPermission('socialise::', '::', ACCESS_ADMIN)
+        );
+
+        $form = FormUtil::newForm('Socialise', $this);
+        return $form->execute('admin/modifyconfig.tpl', new Socialise_Handler_Keys() );
+    }
+
+    /**
+     * Twitter.
+     *
+     * @return string Output of the Twitter admin interface.
+     */
     public function twitter()
     {
         $this->throwForbiddenUnless(
-            SecurityUtil::checkPermission('socialise::', '::', ACCESS_ADMIN),
-            LogUtil::getErrorMsgPermission()
+            SecurityUtil::checkPermission('socialise::', '::', ACCESS_ADMIN)
         );
 
         return $this->view->fetch('admin/twitter.tpl');
-
     }
-
 
     /**
-    * SexyBookmarks administration function
-    *
-    * This function provides the SexyBookmarks administration interface
-    * module.
-    *
-    * @return string output the SexyBookmarks admin interface
-    */
+     * Facebook.
+     *
+     * @return string Output of the Facebook admin interface.
+     */
+    public function facebook()
+    {
+        $this->throwForbiddenUnless(
+            SecurityUtil::checkPermission('socialise::', '::', ACCESS_ADMIN)
+        );
+
+        $values = $this->getVar('keys');
+
+        // validation checks
+        if (!array_filter($values['Facebook'])) {
+            LogUtil::registerError($this->__("Please enter a Facebook ID, otherwise you won't be able to use its plugins."));
+        }
+
+        return $this->view->fetch('admin/facebook.tpl');
+    }
+
+    /**
+     * SexyBookmarks.
+     *
+     * @return string Output of the SexyBookmarks admin interface.
+     */
     public function sexybookmarks()
     {
+        $this->throwForbiddenUnless(
+            SecurityUtil::checkPermission('socialise::', '::', ACCESS_ADMIN)
+        );
 
-        $sexybookmarks = unserialize( $this->getVar('sexybookmarks') );
-        $this->view->assign($sexybookmarks);
+        $nojs = (bool)FormUtil::getPassedValue('nojs', false);
 
-        $services = ModUtil::apiFunc('socialise', 'user', 'getServices');
-        $activeServices = array();
-        foreach($sexybookmarks as $key => $value) {
-            $activeServices[$value] = $services[$value];
-        }
-        $inactiveServices = array();
-        foreach($services as $key => $value) {
-            if(!in_array($key, $sexybookmarks) ) {
-                $inactiveServices[$key] = $value;
+        if ($nojs) {
+            $form = FormUtil::newForm('Socialise', $this);
+            return $form->execute('admin/sexybookmarks_nojs.tpl', new Socialise_Handler_Sexybookmarks());
+
+        } else {
+            $services = ModUtil::apiFunc('Socialise', 'user', 'getServices');
+
+            $sexybookmarks = $this->getVar('sexybookmarks');
+
+            $activeServices = array();
+            foreach ($sexybookmarks as $k) {
+                $activeServices[$k] = $services[$k];
             }
+
+            $inactiveServices = array();
+            foreach ($services as $k => $value) {
+                if (!in_array($k, $sexybookmarks) ) {
+                    $inactiveServices[$k] = $value;
+                }
+            }
+
+            return $this->view->assign($sexybookmarks)
+                              ->assign('activeServices', $activeServices)
+                              ->assign('inactiveServices', $inactiveServices)
+                              ->fetch('admin/sexybookmarks.tpl');
         }
-        $this->view->assign("activeServices", $activeServices);
-        $this->view->assign("inactiveServices", $inactiveServices);
-
-        return $this->view->fetch('admin/sexybookmarks.tpl');
-
-        /*($form = FormUtil::newForm('socialise', $this);
-        return $form->execute('admin/sexybookmarks_nojs.tpl', new Socialise_Handler_Sexybookmarks() );*/
     }
 
-
-    public function like()
-    {
-        $form = FormUtil::newForm('socialise', $this);
-        return $form->execute('admin/like.tpl', new Socialise_Handler_Like() );
-
-    }
-
-
+    /**
+     * ShareThis.
+     *
+     * @return string Output of the ShareThis admin interface.
+     */
     public function sharethis()
     {
         $this->throwForbiddenUnless(
-            SecurityUtil::checkPermission('socialise::', '::', ACCESS_ADMIN),
-            LogUtil::getErrorMsgPermission()
+            SecurityUtil::checkPermission('socialise::', '::', ACCESS_ADMIN)
         );
 
         return $this->view->fetch('admin/sharethis.tpl');
-
     }
 }

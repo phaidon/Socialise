@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Copyright socialise Team 2011
  *
@@ -22,22 +21,19 @@ class Socialise_Controller_Ajax extends Zikula_AbstractController
     }
 
     /**
-    * updateServices
-    */
+     * Update services.
+     */
     public function updateServices()
     {
         $this->throwForbiddenUnless(
-            SecurityUtil::checkPermission('socialise::', '::', ACCESS_ADMIN),
-            AjaxUtil::error(LogUtil::registerPermissionError(null,true))
+            SecurityUtil::checkPermission('socialise::', '::', ACCESS_ADMIN)
         );
 
-      
         $services = FormUtil::getPassedValue('services', -1, 'GET');
-        $services = split(',', $services);
-
         if ($services == -1) {
             return AjaxUtil::error(LogUtil::registerError($this->__('No services passed.')));
         }
-        $this->setVar('sexybookmarks', serialize($services));
+
+        $this->setVar('sexybookmarks', explode(',', $services));
     }
 }

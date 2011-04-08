@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Copyright socialise Team 2011
  *
@@ -16,28 +15,29 @@
 
 class Socialise_Api_Admin extends Zikula_AbstractApi 
 {
-    //-----------------------------------------------------------//
-    //-- Admin panel menu ---------------------------------------//
-    //-----------------------------------------------------------//
-
     /**
-    * Get available admin panel links
-    *
-    * @author Fabian Wuertz
-    * @return array array of admin links
-    */
+     * Get available admin panel links.
+     *
+     * @author Fabian Wuertz
+     * @return array array of admin links
+     */
     public function getlinks()
     {
         $links = array();
+
         if (SecurityUtil::checkPermission('socialise::', '::', ACCESS_ADMIN)) {
+            $links[] = array(
+                'url' => ModUtil::url('socialise', 'admin', 'main'),
+                'text' => $this->__('Keys Management')
+            );
             $links[] = array(
                 'url' => ModUtil::url('socialise', 'admin', 'twitter'), 
                 'text' => 'Twitter',
                 'class' => 'z-icon-es-twitter'
             );
             $links[] = array(
-                'url' => ModUtil::url('socialise', 'admin', 'like'),
-                'text' => 'Facebook like button',
+                'url' => ModUtil::url('socialise', 'admin', 'facebook'),
+                'text' => 'Facebook',
                 'class' => 'z-icon-es-facebook'
             );
             $links[] = array(
