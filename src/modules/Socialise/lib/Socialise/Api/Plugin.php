@@ -210,8 +210,7 @@ class Socialise_Api_Plugin extends Zikula_AbstractApi
         }
 
         // build the plugin output
-        return $this->view->assign('linewidth', count($sexybookmarks)*66)
-                          ->assign('sexybookmarks', $sexybookmarks)
+        return $this->view->assign('plugin', array('linewidth' => count($sexybookmarks)*64, 'sexybookmarks'=> $sexybookmarks))
                           ->fetch('plugin/sexybookmarks.tpl');
     }
 
