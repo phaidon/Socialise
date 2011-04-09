@@ -16,6 +16,40 @@
 class Socialise_Api_Plugin extends Zikula_AbstractApi
 {
     /**
+     * Instance of Zikula_View.
+     *
+     * @var Zikula_View
+     */
+    protected $view;
+
+    /**
+     * Initialize.
+     *
+     * @return void
+     */
+    protected function initialize()
+    {
+        $this->setView();
+    }
+
+    /**
+     * Set view property.
+     *
+     * @param Zikula_View $view Default null means new Render instance for this module name.
+     *
+     * @return Zikula_AbstractController
+     */
+    protected function setView(Zikula_View $view = null)
+    {
+        if (is_null($view)) {
+            $view = Zikula_View::getInstance($this->getName());
+        }
+
+        $this->view = $view;
+        return $this;
+    }
+
+    /**
      * Twitter plugin
      *
      * @param  array $args Parameters from the plugin (title, url, count).
@@ -31,8 +65,7 @@ class Socialise_Api_Plugin extends Zikula_AbstractApi
             'count' => (isset($args['count']) && in_array($args['count'], array('none', 'horizontal'))) ? $args['count'] : 'none'
         );
 
-        $this->view = Zikula_View::getInstance($this->getName());
-
+        // build the plugin output
         return $this->view->assign('plugin', $args)
                           ->fetch('plugin/twitter.tpl');
     }
@@ -66,7 +99,7 @@ class Socialise_Api_Plugin extends Zikula_AbstractApi
             'colorscheme' => (isset($args['colorscheme'])) ? strtolower($args['colorscheme']) : '',
             'addmetatags' => (isset($args['addmetatags'])) ? (bool)$args['addmetatags'] : false,
             'metatitle'   => (isset($args['metatitle']) && $args['metatitle']) ? $args['metatitle'] : PageUtil::getVar('title'),
-            'metatype'    => (isset($args['metatype']) && $args['metatype']) ? $args['metatype'] : 'news',
+            'metatype'    => (isset($args['metatype']) && $args['metatype']) ? $args['metatype'] : 'article',
             'metaimage'   => (isset($args['metaimage']) && $args['metaimage']) ? $args['metaimage'] : ''
         );
 
@@ -137,9 +170,7 @@ class Socialise_Api_Plugin extends Zikula_AbstractApi
             }
         }
 
-        //build the plugin output
-        $this->view = Zikula_View::getInstance($this->getName());
-
+        // build the plugin output
         $this->view->assign('plugin', $args);
 
         if ($args['tpl'] && $this->view->template_exists("plugin/fblike_{$args['tpl']}.tpl")) {
@@ -178,8 +209,7 @@ class Socialise_Api_Plugin extends Zikula_AbstractApi
             );
         }
 
-        $this->view = Zikula_View::getInstance($this->getName());
-
+        // build the plugin output
         return $this->view->assign('linewidth', count($sexybookmarks)*66)
                           ->assign('sexybookmarks', $sexybookmarks)
                           ->fetch('plugin/sexybookmarks.tpl');
@@ -206,7 +236,6 @@ class Socialise_Api_Plugin extends Zikula_AbstractApi
         }
 
         $output = '';
-        $this->view = Zikula_View::getInstance($this->getName());
 
         // stuff to do once and once only....
         static $onceonly = false;
@@ -215,6 +244,7 @@ class Socialise_Api_Plugin extends Zikula_AbstractApi
             $onceonly = true;
         }
 
+        // build the plugin output
         $this->view->assign('plugin', $args);
 
         // stuff to do for each item

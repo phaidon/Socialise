@@ -26,12 +26,13 @@
             <li>{gt text='faces: Specifies whether to display profile photos below the button (standard layout only) (default: false).'}</li>
             <li>{gt text='addmetatags: Enable the addition of the meta tags by the plugin (default: false).'}</li>
             <li>{gt text='metatitle: Title to be set on the meta tag, if enabled.'}</li>
-            <li>{gt text='metatype: Type to be set on the meta tag (default: news).'}</li>
+            {assign var='url' value='http://developers.facebook.com/docs/opengraph#types'}
+            <li>{gt text='metatype: The type of entity. You must select a type from the list of <a href="%s">Open Graph typess</a>. (default: article).' tag1=$url}</li>
             <li>{gt text='metaimage: Image to be set on the meta tag.'}</li>
         </ul>
 
-        {assign var='facebookurl' value='http://developers.facebook.com/docs/reference/plugins/like/'}
-        <p>{gt text="You can find more informations and visuals examples <a href='%s'>here</a>." tag1=$facebookurl}</p>
+        {assign var='url' value='http://developers.facebook.com/docs/reference/plugins/like/'}
+        <p>{gt text="You can find more informations and visuals examples <a href='%s'>here</a>." tag1=$url}</p>
         <hr />
         <strong style="font-size:1.3em;">{gt text='Examples:'}</strong>
         <dl>
