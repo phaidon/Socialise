@@ -90,7 +90,7 @@ class Socialise_Api_Plugin extends Zikula_AbstractApi
             case 'box_count':
                 $args['layout'] = 'box_count';
                 // adjust the size
-                $args['width']  = $args['width'] >= 55 ? $args['width'] : 55;
+                $args['width']  = $args['width'] >= 80 ? $args['width'] : 80;
                 $args['height'] = $args['height'] >= 65 ? $args['height'] : 65;
                 break;
             default:
@@ -102,7 +102,7 @@ class Socialise_Api_Plugin extends Zikula_AbstractApi
                 if ($args['faces']) {
                     $args['height'] = $args['height'] >= 80 ? $args['height'] : 80;
                 }
-                $args['height'] = $args['height'] >= 24 ? $args['height'] : 24;
+                $args['height'] = $args['height'] >= 25 ? $args['height'] : 25;
         }
         $args['faces'] = $args['faces'] ? 'true' : 'false';
 
@@ -116,6 +116,11 @@ class Socialise_Api_Plugin extends Zikula_AbstractApi
             $args['colorscheme'] = 'light';
         }
 
+        // add the meta tags
+        foreach (array_filter($values['Facebook']) as $prop => $content) {
+            PageUtil::addVar('rawtext', '<meta property="fb:'.$prop.'" content="'.$content.'" />');
+        }
+
         if ($args['addmetatags']) {
             $metadata = array(
                 'title'     => $args['metatitle'],
@@ -127,15 +132,12 @@ class Socialise_Api_Plugin extends Zikula_AbstractApi
                 $metadata['image'] = $args['metaimage'];
             }
 
-            foreach (array_filter($values['Facebook']) as $prop => $content) {
-                PageUtil::addVar('rawtext', '<meta property="fb:'.$prop.'" content="'.$content.'" />');
-            }
-
             foreach($metadata as $prop => $content ) {
                 PageUtil::addVar('rawtext', '<meta property="og:'.$prop.'" content="'.$content.'" />');
             }
         }
 
+        //build the plugin output
         $this->view = Zikula_View::getInstance($this->getName());
 
         $this->view->assign('plugin', $args);
