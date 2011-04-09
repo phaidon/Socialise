@@ -17,18 +17,19 @@
         <ul>
             <li>{gt text='url: The URL to submit. By default it takes the current URL.'}</li>
             <li>{gt text='layout: Allowed values: "horizontal"/"button_count", "vertical"/"box_count" and "standard" (default)'}</li>
+            <li>{gt text='rel: Identifier of the button source of the traffic (optional).'}</li>
             <li>{gt text='tpl: Template to use (plugin/fblike_XYZ.tpl). The XFBML version is more versatile, but requires use of the JavaScript SDK.'}</li>
-            <li>{gt text='width: Width of the widget (default: 80).'}</li>
-            <li>{gt text='height: Height of the widget (default: 25).'}</li>
+            <li>{gt text='width: Width of the widget (default: 55).'}</li>
+            <li>{gt text='height: Height of the widget (default: 20).'}</li>
             <li>{gt text='action: The verb to display on the button. Options: "like", "recommend" (default: like).'}</li>
             <li>{gt text='colorscheme: The color scheme for the like button. Options: "light", "dark" (default: light).'}</li>
-            <li>{gt text='font: Possible values: arial, lucida grande, segoe ui, tahoma, trebuchet ms, verdana.'}</li>
+            <li>{gt text='font: Possible values: arial, lucida grande, segoe ui, tahoma, trebuchet ms, verdana.  (optional)'}</li>
             <li>{gt text='faces: Specifies whether to display profile photos below the button (standard layout only) (default: false).'}</li>
             <li>{gt text='addmetatags: Enable the addition of the meta tags by the plugin (default: false).'}</li>
-            <li>{gt text='metatitle: Title to be set on the meta tag, if enabled.'}</li>
+            <li>{gt text='metatitle: Title to be set on the meta tag, if enabled  (default: false).'}</li>
             {assign var='url' value='http://developers.facebook.com/docs/opengraph#types'}
             <li>{gt text='metatype: The type of entity. You must select a type from the list of <a href="%s">Open Graph types</a>. (default: article).' tag1=$url}</li>
-            <li>{gt text='metaimage: Image to be set on the meta tag.'}</li>
+            <li>{gt text='metaimage: Image to be set on the meta tag  (optional).'}</li>
         </ul>
 
         {assign var='url' value='http://developers.facebook.com/docs/reference/plugins/like/'}

@@ -73,7 +73,7 @@ class Socialise_Api_Plugin extends Zikula_AbstractApi
     /**
      * Facebook like button plugin
      *
-     * @param  array $args Parameters from the plugin (tpl, url, layout, width, height, action, colorscheme, font, faces, addmetatags, metatitle, metatype, metaimage).
+     * @param  array $args Parameters from the plugin (tpl, url, layout, rel, width, height, action, colorscheme, font, faces, addmetatags, metatitle, metatype, metaimage).
      *
      * @return string Output.
      */
@@ -90,6 +90,7 @@ class Socialise_Api_Plugin extends Zikula_AbstractApi
         $args = array(
             'tpl'    => (isset($args['tpl']) && $args['tpl']) ? DataUtil::formatForOS($args['tpl']) : '',
             'url'    => (isset($args['url']) && $args['url']) ? $args['url'] : ModUtil::apiFunc('socialise', 'user', 'getCurrentUrl'),
+            'rel'    => (isset($args['rel']) && $args['rel']) ? $args['rel'] : '',
             'action' => (isset($args['action']) && $args['action']) ? strtolower($args['action']) : '',
             'layout' => (isset($args['layout'])) ? $args['layout'] : '',
             'faces'  => (isset($args['faces'])) ? (bool)$args['faces'] : false,
