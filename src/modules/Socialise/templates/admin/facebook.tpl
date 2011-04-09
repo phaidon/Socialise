@@ -38,9 +38,9 @@
         <strong style="font-size:1.3em;">{gt text='Examples:'}</strong>
         <dl>
             <dt><strong>{gt text='%s module:' tag1='News'}</strong></dt>
-            <dd>{ldelim}fblike url=$links.permalink title=$info.title{rdelim}</dd>
+            <dd>{ldelim}fblike url=$links.permalink layout='horizontal'{rdelim}</dd>
             <dt><strong>{gt text='%s module:' tag1='Clip'}</strong></dt>
-            <dd>{ldelim}fblike url=$returnurl title=$pubdata.core_title{rdelim}</dd>
+            <dd>{ldelim}fblike url=$returnurl tpl='xfbml'{rdelim}</dd>
         </dl>
     </div>
 </div>

@@ -13,6 +13,7 @@
  *   For the News module: {sharethis id=$info.sid url=$links.permalink title=$info.title}
  *   For a Clip publication: {sharethis id=$pubdata.core_uniqueid url=$returnurl title=$pubdata.core_title}
  *
+ * @see    Socialise_Api_Plugin::sharethis
  * @author Mark West
  * @since  08/02/2007
  * @link   http://www.markwest.me.uk/

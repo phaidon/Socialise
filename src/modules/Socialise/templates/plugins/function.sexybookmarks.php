@@ -11,6 +11,7 @@
  *   For the News module: {sexybookmarks url=$links.permalink title=$info.title}
  *   For a Clip publication: {sexybookmarks url=$returnurl title=$pubdata.core_title}
  *
+ * @see    Socialise_Api_Plugin::sexybookmarks
  * @author Mark West
  * @since  08/02/2007
  * @link   http://www.markwest.me.uk/
