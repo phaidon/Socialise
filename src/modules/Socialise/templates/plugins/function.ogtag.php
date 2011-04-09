@@ -30,5 +30,9 @@ function smarty_function_ogtag($params, &$view)
         return;
     }
 
+    if (empty($params['content'])) {
+        return;
+    }
+
     PageUtil::addVar('rawtext', '<meta property="og:'.$params['prop'].'" content="'.$params['content'].'" />');
 }
