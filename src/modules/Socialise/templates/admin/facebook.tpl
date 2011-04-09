@@ -27,7 +27,7 @@
             <li>{gt text='addmetatags: Enable the addition of the meta tags by the plugin (default: false).'}</li>
             <li>{gt text='metatitle: Title to be set on the meta tag, if enabled.'}</li>
             {assign var='url' value='http://developers.facebook.com/docs/opengraph#types'}
-            <li>{gt text='metatype: The type of entity. You must select a type from the list of <a href="%s">Open Graph typess</a>. (default: article).' tag1=$url}</li>
+            <li>{gt text='metatype: The type of entity. You must select a type from the list of <a href="%s">Open Graph types</a>. (default: article).' tag1=$url}</li>
             <li>{gt text='metaimage: Image to be set on the meta tag.'}</li>
         </ul>
 
