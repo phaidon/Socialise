@@ -1,3 +1,4 @@
 {pageaddvar name='stylesheet' value='modules/Socialise/style/style.css'}
-<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-<a href="http://twitter.com/share" class="twitter-share-button" data-url="{$plugin.url}" data-text="{$plugin.title}" data-count="{$plugin.count}">Tweet</a>
+{pageaddvar name='javascript' value='http://platform.twitter.com/widgets.js'}
+
+<a href="http://twitter.com/share" class="twitter-share-button" data-url="{$plugin.url}" data-text="{$plugin.title}" data-count="{$plugin.count}" data-lang="{lang}"{if $plugin.via} data-via="{$plugin.via}"{/if}>Tweet</a>
