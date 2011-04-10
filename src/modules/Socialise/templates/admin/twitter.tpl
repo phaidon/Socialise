@@ -7,13 +7,23 @@
     <div class="z-informationmsg socialize-docblock">
         <p style="font-size:1.3em;"><strong>{gt text='Usages:'}</strong>
             <br />
+            {ldelim}twitter{rdelim}<br />
             {ldelim}twitter url=$url title=$title{rdelim}<br />
-            {ldelim}twitter url=$url title=$title count='horizontal'{rdelim}
+            {ldelim}twitter url=$url title=$title count='horizontal'{rdelim}<br />
+            {ldelim}twitter url=$url title=$title via=false count='vertical'{rdelim}<br />
+            {ldelim}twitter url=$url title=$title via='{gt text='anotherTwitterAccount'}'{rdelim}<br />
+            {ldelim}twitter url=$url title=$title related='{gt text='account:description'}'{rdelim}
         </p>
         <ul>
-            <li>{gt text='url: The URL to submit. By default it takes the current URL.'}</li>
-            <li>{gt text='title: The title of the page the button is on.'}</li>
+            <li>{gt text='url: The URL to submit (optional). By default the button takes the current URL.'}</li>
+            <li>{gt text='title: Text of the tweet to be shared. By default the button takes the title of the page the button is on.'}</li>
             <li>{gt text='count: The place of the count box. Allowed values: "horizontal", "vertical" and "none" (default)'}</li>
+            <li>{gt text='Recommends up to two Twitter accounts to users to follow after sharing the contents of your web site with:'}
+                <ul>
+                    <li>{gt text="via: The site's Twitter account or a fixed one, or false to disable (default: true)."}</li>
+                    <li>{gt text="related: A collaborator or partner account with its description in the format: %s." __tag1='account:description'}</li>
+                </ul>
+            </li>
         </ul>
 
         {assign var='twitterurl' value='http://twitter.com/about/resources/tweetbutton'}

@@ -52,7 +52,7 @@ class Socialise_Api_Plugin extends Zikula_AbstractApi
     /**
      * Twitter plugin
      *
-     * @param  array $args Parameters from the plugin (title, url, count).
+     * @param  array $args Parameters from the plugin (title, url, count, via, related).
      *
      * @return string Output.
      */
@@ -60,10 +60,23 @@ class Socialise_Api_Plugin extends Zikula_AbstractApi
     {
         # http://twitter.com/about/resources/tweetbutton#type-fields
         $args = array(
-            'title' => (isset($args['title']) && $args['title']) ? $args['title'] : '',
-            'url'   => (isset($args['url']) && $args['url']) ? $args['url'] : ModUtil::apiFunc($this->name, 'user', 'getCurrentUrl'),
-            'count' => (isset($args['count']) && in_array($args['count'], array('none', 'horizontal'))) ? $args['count'] : 'none'
+            'title'   => (isset($args['title']) && $args['title']) ? $args['title'] : '',
+            'url'     => (isset($args['url']) && $args['url']) ? $args['url'] : '',
+            'count'   => (isset($args['count']) && in_array($args['count'], array('none', 'vertical', 'horizontal'))) ? $args['count'] : 'none',
+            'via'     => (isset($args['via'])) ? $args['via'] : true,
+            'related' => (isset($args['related']) && $args['related']) ? $args['related'] : ''
         );
+
+        // process via if is not fixed
+        if ($args['via'] && !is_string($args['via'])) {
+            $keys  = ModUtil::apiFunc('Socialise', 'user', 'getKeys', array('service' => 'Twitter'));
+            $args['via'] = (isset($keys['siteaccount']) && $keys['siteaccount']) ? $keys['siteaccount'] : false;
+        }
+
+        // process lang
+        $lang  = substr(ZLanguage::getLanguageCode(), 0, 2);
+        $langs = array('de', 'en', 'es', 'fr', 'it', 'ja', 'ko');
+        $args['lang'] = in_array($lang, $langs) ? $lang : 'en';
 
         // build the plugin output
         return $this->view->assign('plugin', $args)
@@ -82,15 +95,14 @@ class Socialise_Api_Plugin extends Zikula_AbstractApi
         # http://developers.facebook.com/docs/reference/plugins/like/
 
         // validation of Facebook ID
-        $values  = $this->getVar('keys');
-        if (!array_filter($values['Facebook'])) {
+        $keys = ModUtil::apiFunc('Socialise', 'user', 'getKeys', array('service' => 'Facebook'));
+        if (!array_filter($keys)) {
             return '';
         }
 
         $args = array(
             'tpl'    => (isset($args['tpl']) && $args['tpl']) ? DataUtil::formatForOS($args['tpl']) : '',
             'url'    => (isset($args['url']) && $args['url']) ? $args['url'] : ModUtil::apiFunc('socialise', 'user', 'getCurrentUrl'),
-            'rel'    => (isset($args['rel']) && $args['rel']) ? $args['rel'] : '',
             'action' => (isset($args['action']) && $args['action']) ? strtolower($args['action']) : '',
             'layout' => (isset($args['layout'])) ? $args['layout'] : '',
             'faces'  => (isset($args['faces'])) ? (bool)$args['faces'] : false,
@@ -152,8 +164,10 @@ class Socialise_Api_Plugin extends Zikula_AbstractApi
         }
 
         // add the meta tags
-        foreach (array_filter($values['Facebook']) as $prop => $content) {
-            PageUtil::addVar('rawtext', '<meta property="fb:'.$prop.'" content="'.$content.'" />');
+        foreach (array_filter($keys) as $prop => $content) {
+            if (in_array($prop, array('app_id', 'admins'))) {
+                PageUtil::addVar('rawtext', '<meta property="fb:'.$prop.'" content="'.$content.'" />');
+            }
         }
 
         if ($args['addmetatags']) {

@@ -24,7 +24,7 @@ class Socialise_Api_User extends Zikula_AbstractApi
             if (isset($keys[$args['service']])) {
                 return $keys[$args['service']];
             }
-            return false;
+            return array();
         }
 
         return $keys;
