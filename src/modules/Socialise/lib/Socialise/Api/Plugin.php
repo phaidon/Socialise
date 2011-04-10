@@ -61,7 +61,7 @@ class Socialise_Api_Plugin extends Zikula_AbstractApi
         # http://twitter.com/about/resources/tweetbutton#type-fields
         $args = array(
             'title' => (isset($args['title']) && $args['title']) ? $args['title'] : '',
-            'url'   => (isset($args['url']) && $args['url']) ? $args['url'] : ModUtil::apiFunc('socialise', 'user', 'getCurrentUrl'),
+            'url'   => (isset($args['url']) && $args['url']) ? $args['url'] : ModUtil::apiFunc($this->name, 'user', 'getCurrentUrl'),
             'count' => (isset($args['count']) && in_array($args['count'], array('none', 'horizontal'))) ? $args['count'] : 'none'
         );
 
@@ -95,6 +95,7 @@ class Socialise_Api_Plugin extends Zikula_AbstractApi
             'layout' => (isset($args['layout'])) ? $args['layout'] : '',
             'faces'  => (isset($args['faces'])) ? (bool)$args['faces'] : false,
             'font'   => (isset($args['font'])) ? $args['font'] : '',
+            'ref'    => (isset($args['ref'])) ? $args['ref'] : '',
             'width'  => (isset($args['width']) && $args['width']) ? (int)$args['width'] : 55,
             'height' => (isset($args['height']) && $args['height']) ? (int)$args['height'] : 20,
             'colorscheme' => (isset($args['colorscheme'])) ? strtolower($args['colorscheme']) : '',
