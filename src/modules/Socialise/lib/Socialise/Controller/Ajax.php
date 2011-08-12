@@ -26,7 +26,7 @@ class Socialise_Controller_Ajax extends Zikula_AbstractController
     public function updateServices()
     {
         $this->throwForbiddenUnless(
-            SecurityUtil::checkPermission('socialise::', '::', ACCESS_ADMIN)
+            SecurityUtil::checkPermission('Socialise::', '::', ACCESS_ADMIN)
         );
 
         $services = FormUtil::getPassedValue('services', -1, 'GET');

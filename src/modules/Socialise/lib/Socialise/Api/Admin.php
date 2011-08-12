@@ -25,7 +25,7 @@ class Socialise_Api_Admin extends Zikula_AbstractApi
     {
         $links = array();
 
-        if (SecurityUtil::checkPermission('socialise::', '::', ACCESS_ADMIN)) {
+        if (SecurityUtil::checkPermission('Socialise::', '::', ACCESS_ADMIN)) {
             $links[] = array(
                 'url' => ModUtil::url('socialise', 'admin', 'main'),
                 'text' => $this->__('Keys Management')

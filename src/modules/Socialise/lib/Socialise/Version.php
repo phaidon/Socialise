@@ -24,7 +24,7 @@ class Socialise_Version extends Zikula_AbstractVersion
         //! module url in lowercase and different to displayname
         $meta['url']            = $this->__('socialise');
         $meta['version']        = '0.2.0';
-        $meta['securityschema'] = array('socialise::' => '::');
+        $meta['securityschema'] = array('Socialise::' => '::');
         return $meta;
     }
 }

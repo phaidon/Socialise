@@ -27,7 +27,7 @@ class Socialise_Controller_Admin extends Zikula_AbstractController
     public function modifyconfig()
     {
         $this->throwForbiddenUnless(
-            SecurityUtil::checkPermission('socialise::', '::', ACCESS_ADMIN)
+            SecurityUtil::checkPermission('Socialise::', '::', ACCESS_ADMIN)
         );
 
         $form = FormUtil::newForm('Socialise', $this);
@@ -42,7 +42,7 @@ class Socialise_Controller_Admin extends Zikula_AbstractController
     public function twitter()
     {
         $this->throwForbiddenUnless(
-            SecurityUtil::checkPermission('socialise::', '::', ACCESS_ADMIN)
+            SecurityUtil::checkPermission('Socialise::', '::', ACCESS_ADMIN)
         );
 
         return $this->view->fetch('admin/twitter.tpl');
@@ -56,7 +56,7 @@ class Socialise_Controller_Admin extends Zikula_AbstractController
     public function facebook()
     {
         $this->throwForbiddenUnless(
-            SecurityUtil::checkPermission('socialise::', '::', ACCESS_ADMIN)
+            SecurityUtil::checkPermission('Socialise::', '::', ACCESS_ADMIN)
         );
 
         $values = $this->getVar('keys');
@@ -77,7 +77,7 @@ class Socialise_Controller_Admin extends Zikula_AbstractController
     public function sexybookmarks()
     {
         $this->throwForbiddenUnless(
-            SecurityUtil::checkPermission('socialise::', '::', ACCESS_ADMIN)
+            SecurityUtil::checkPermission('Socialise::', '::', ACCESS_ADMIN)
         );
 
         $nojs = (bool)FormUtil::getPassedValue('nojs', false);
@@ -118,7 +118,7 @@ class Socialise_Controller_Admin extends Zikula_AbstractController
     public function sharethis()
     {
         $this->throwForbiddenUnless(
-            SecurityUtil::checkPermission('socialise::', '::', ACCESS_ADMIN)
+            SecurityUtil::checkPermission('Socialise::', '::', ACCESS_ADMIN)
         );
 
         return $this->view->fetch('admin/sharethis.tpl');
