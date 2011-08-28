@@ -45,5 +45,5 @@ function smarty_function_ogtag($params, &$view)
         return;
     }
 
-    PageUtil::addVar('header', '<meta property="og:'.$params['prop'].'" content="'.$params['content'].'" />');
+    PageUtil::addVar('header', "<!--\n".'<meta property="og:'.$params['prop'].'" content="'.$params['content'].'" />'."\n-->");
 }

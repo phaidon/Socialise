@@ -166,7 +166,7 @@ class Socialise_Api_Plugin extends Zikula_AbstractApi
         // add the meta tags
         foreach (array_filter($keys) as $prop => $content) {
             if (in_array($prop, array('app_id', 'admins'))) {
-                PageUtil::addVar('header', '<meta property="fb:'.$prop.'" content="'.$content.'" />');
+                PageUtil::addVar('header', "<!--\n".'<meta property="fb:'.$prop.'" content="'.$content.'" />'."\n-->");
             }
         }
 
@@ -182,7 +182,7 @@ class Socialise_Api_Plugin extends Zikula_AbstractApi
             }
 
             foreach($metadata as $prop => $content ) {
-                PageUtil::addVar('header', '<meta property="og:'.$prop.'" content="'.$content.'" />');
+                PageUtil::addVar('header', "<!--\n".'<meta property="og:'.$prop.'" content="'.$content.'" />'."\n-->");
             }
         }
 
