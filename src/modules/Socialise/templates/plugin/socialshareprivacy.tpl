@@ -1,5 +1,4 @@
-{pageaddvar name='javascript' value='javascript/jquery/jquery-1.7.0.min.js'}
-{pageaddvar name='javascript' value='javascript/jquery/noconflict.js'}
+{pageaddvar name='javascript' value='jquery'}
 {pageaddvar name='javascript' value='modules/Socialise/javascript/socialshareprivacy/jquery.socialshareprivacy.min.js'}
 {pageaddvar name='stylesheet' value='modules/Socialise/javascript/socialshareprivacy/socialshareprivacy.css'}
 
