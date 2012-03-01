@@ -50,6 +50,11 @@ class Socialise_Api_Admin extends Zikula_AbstractApi
                 'text' => 'ShareThis',
                 'class' => 'z-icon-es-sharethis'
             );
+            $links[] = array(
+                'url' => ModUtil::url('socialise', 'admin', 'socialshareprivacy'),
+                'text' => 'SocialSharePrivacy',
+                'class' => 'z-icon-es-socialshareprivacy'
+            );
         }
         return $links;
     }

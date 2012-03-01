@@ -68,6 +68,16 @@ class Socialise_Controller_Admin extends Zikula_AbstractController
 
         return $this->view->fetch('admin/facebook.tpl');
     }
+    
+    
+    public function socialshareprivacy()
+    {
+        $this->throwForbiddenUnless(
+            SecurityUtil::checkPermission('Socialise::', '::', ACCESS_ADMIN)
+        );
+
+        return $this->view->fetch('admin/socialshareprivacy.tpl');
+    }
 
     /**
      * SexyBookmarks.

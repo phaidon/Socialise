@@ -1,3 +1,4 @@
+{pageaddvar name='stylesheet' value='modules/Socialise/style/admin.css'}
 {adminheader}
 <div class="z-admin-content-pagetitle">
     {icon type="config" size="small"}
@@ -33,7 +34,7 @@
     </ul>
 
     {assign var='url' value='http://developers.facebook.com/docs/reference/plugins/like/'}
-    <p>{gt text="You can find more informations and visuals examples <a href='%s'>here</a>." tag1=$url}</p>
+    <p>{gt text="You can find more information and visuals examples <a href='%s'>here</a>." tag1=$url}</p>
     <hr />
     <strong style="font-size:1.3em;">{gt text='Examples:'}</strong>
     <dl>

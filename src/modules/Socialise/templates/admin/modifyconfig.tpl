@@ -1,3 +1,4 @@
+{pageaddvar name='stylesheet' value='modules/Socialise/style/admin.css'}
 {adminheader}
 <div class="z-admin-content-pagetitle">
     {icon type="config" size="small"}

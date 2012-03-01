@@ -1,3 +1,4 @@
+{pageaddvar name='stylesheet' value='modules/Socialise/style/admin.css'}
 {pageaddvar name='stylesheet' value='modules/Socialise/style/admin_sexybookmarks.css'}
 {ajaxheader modname='Socialise' filename='admin_sexybookmarks.js'}
 
