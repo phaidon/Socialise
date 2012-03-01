@@ -265,4 +265,16 @@ class Socialise_Api_Plugin extends Zikula_AbstractApi
         // stuff to do for each item
         return $output.$this->view->fetch('plugin/sharethis.tpl');
     }
+    
+    /**
+     * socialshareprivacy plugin.
+     *
+     * @param  array $args Parameters from the plugin (id, title, url, text).
+     *
+     * @return string Output.
+     */
+    public function socialshareprivacy() {
+    	return $this->view->fetch('plugin/socialshareprivacy.tpl');
+	}
+	
 }
