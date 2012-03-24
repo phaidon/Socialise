@@ -107,7 +107,7 @@ class Socialise_Api_User extends Zikula_AbstractApi
             'facebook'=>array(
                 'name'  => 'Facebook',
                 'title' => $this->__f('Share this on %s', 'Facebook'),
-                'url'   => 'http://www.facebook.com/title.php?v=4&amp;src=bm&amp;u={url}&amp;t={title}',
+                'url'   => 'http://www.facebook.com/sharer.php?&amp;u={url}&amp;t={title}',
             ),
             'twitter'=>array(
                 'name'  => 'Twitter',
