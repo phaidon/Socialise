@@ -23,7 +23,7 @@ class Socialise_Version extends Zikula_AbstractVersion
         $meta['description']    = $this->__('Share content with social websites like Facebook and Twitter and handle your site Keys.');
         //! module url in lowercase and different to displayname
         $meta['url']            = $this->__('socialise');
-        $meta['version']        = '0.2.0';
+        $meta['version']        = '0.2.1';
         $meta['securityschema'] = array('Socialise::' => '::');
         return $meta;
     }
