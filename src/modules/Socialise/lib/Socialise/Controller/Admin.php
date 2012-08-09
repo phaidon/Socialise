@@ -70,6 +70,22 @@ class Socialise_Controller_Admin extends Zikula_AbstractController
     }
     
     
+    /**
+     * Googe+.
+     *
+     * @return string Output of the Google+ admin interface.
+     */
+    public function googleplus()
+    {
+        $this->throwForbiddenUnless(
+            SecurityUtil::checkPermission('Socialise::', '::', ACCESS_ADMIN)
+        );
+
+        return $this->view->fetch('admin/googleplus.tpl');
+    }
+    
+    
+    
     public function socialshareprivacy()
     {
         $this->throwForbiddenUnless(

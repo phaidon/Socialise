@@ -41,6 +41,11 @@ class Socialise_Api_Admin extends Zikula_AbstractApi
                 'class' => 'z-icon-es-facebook'
             );
             $links[] = array(
+                'url' => ModUtil::url('socialise', 'admin', 'googleplus'),
+                'text' => 'Google+',
+                'class' => 'z-icon-es-googleplus'
+            );
+            $links[] = array(
                 'url' => ModUtil::url('socialise', 'admin', 'sexybookmarks'),
                 'text' => 'SexyBookmarks',
                 'class' => 'z-icon-es-sexybookmarks'

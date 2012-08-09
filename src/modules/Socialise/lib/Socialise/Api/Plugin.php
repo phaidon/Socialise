@@ -82,6 +82,38 @@ class Socialise_Api_Plugin extends Zikula_AbstractApi
         return $this->view->assign('plugin', $args)
                           ->fetch('plugin/twitter.tpl');
     }
+    
+    
+    /**
+     * Google+ plugin
+     *
+     * @param  array $args Parameters from the plugin (title, url, count, via, related).
+     *
+     * @return string Output.
+     */
+    public function googleplus($args)
+    {
+        # http://twitter.com/about/resources/tweetbutton#type-fields
+        $args = array(
+            'title'       => (isset($args['title']) && $args['title']) ? $args['title'] : '',
+            'description' => (isset($args['description']) && $args['description']) ? $args['description'] : '',
+            'size'        => (isset($args['size']) && $args['size']) ? $args['size'] : '',
+            'width'       => (isset($args['width']) && $args['width']) ? $args['width'] : '',
+            'annotation'  => (isset($args['annotation']) && $args['annotation']) ? $args['annotation'] : ''
+        );
+
+        // process lang
+        $lang  = substr(ZLanguage::getLanguageCode(), 0, 2);
+        $langs = array('de', 'en', 'es', 'fr', 'it', 'ja', 'ko');
+        $args['lang'] = in_array($lang, $langs) ? $lang : 'en';
+
+        PageUtil::addVar('header', '<meta itemprop="name" content="'.$args['title'].'">');
+        PageUtil::addVar('header', '<meta itemprop="description" content="'.$args['description'].'">');
+
+        // build the plugin output
+        return $this->view->assign('plugin', $args)
+                          ->fetch('plugin/googleplus.tpl');
+    }
 
     /**
      * Facebook like button plugin
