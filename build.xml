@@ -31,14 +31,14 @@
             <arg line="--extensions=php --report=checkstyle --standard=Zikula --report-file=${logsdir}/phpcs.xml src" />
         </exec>
         
-                <echo message="csslint..." />
+        <echo message="csslint..." />
         <fileset dir="src/modules/Socialise/style" id="cssfiles.raw">
-          <include name="**/*.css" />
+            <include name="**/*.css" />
         </fileset>
         <pathconvert pathsep=" " property="cssfiles.clean" refid="cssfiles.raw" />
 
         <exec executable="csslint" output="build/logs/csslint.xml">
-          <arg line="--format=checkstyle.xml" />
+          <arg line="--format=checkstyle-xml" />
         </exec>
         
         <echo message="JSLint..." />
