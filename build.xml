@@ -38,7 +38,7 @@
         <pathconvert pathsep=" " property="cssfiles.clean" refid="cssfiles.raw" />
 
         <exec executable="csslint" output="build/logs/csslint.xml">
-          <arg line="--format=csslint-xml" />
+          <arg line="--format=lint-xml" />
         </exec>
         
         <echo message="JSLint..." />
