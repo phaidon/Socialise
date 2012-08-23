@@ -31,6 +31,15 @@
             <arg line="--extensions=php --report=checkstyle --standard=Zikula --report-file=${logsdir}/phpcs.xml src" />
         </exec>
         
+                <echo message="csslint..." />
+        <fileset dir="src/modules/Piwik/style" id="cssfiles.raw">
+          <include name="**/*.css" />
+        </fileset>
+        <pathconvert pathsep=" " property="cssfiles.clean" refid="cssfiles.raw" />
+
+        <exec executable="csslint" output="build/logs/csslint.xml">
+          <arg line="--format=checkstyle.xml" />
+        </exec>
         
         <echo message="JSLint..." />
         <fileset dir="src/modules/Socialise/javascript" id="jsfiles.raw">
