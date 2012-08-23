@@ -32,6 +32,17 @@
         </exec>
         
         
+        <echo message="JSLint..." />
+        <fileset dir="src/modules/Socialise/javascript" id="jsfiles.raw">
+          <include name="**/*.js" />
+          <exclude name="**/*.min.js" />
+        </fileset>
+        <pathconvert pathsep=" " property="jsfiles.clean" refid="jsfiles.raw" />
+
+        <exec executable="jslint4java" output="build/logs/jslint.xml">
+          <arg line="--report xml ${jsfiles.clean}" />
+        </exec>
+        
 
          <!-- PHP MD analysis -->
         <exec executable="phpmd" dir="${env.WORKSPACE}" failonerror="off">
