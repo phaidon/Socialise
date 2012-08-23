@@ -13,12 +13,14 @@
  * information regarding copyright and licensing.
  */
 
+/**
+ * Admin api class.
+ */
 class Socialise_Api_Admin extends Zikula_AbstractApi 
 {
     /**
      * Get available admin panel links.
      *
-     * @author Fabian Wuertz
      * @return array array of admin links
      */
     public function getlinks()

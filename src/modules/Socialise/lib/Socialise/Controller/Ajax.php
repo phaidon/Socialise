@@ -13,8 +13,17 @@
  * information regarding copyright and licensing.
  */
 
+/**
+ * Admin controller.
+ */
 class Socialise_Controller_Ajax extends Zikula_AbstractController
 {
+
+    /**
+     * postSetup
+     *
+     * @return void
+     */
     public function _postSetup()
     {
         // no need for a Zikula_View so override it.
@@ -22,6 +31,8 @@ class Socialise_Controller_Ajax extends Zikula_AbstractController
 
     /**
      * Update services.
+     *
+     * @return statement|void
      */
     public function updateServices()
     {

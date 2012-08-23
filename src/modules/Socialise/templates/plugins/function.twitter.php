@@ -1,5 +1,16 @@
 <?php
 /**
+ * Copyright Wikula Team 2011
+ *
+ * @license GNU/GPLv3 (or at your option, any later version).
+ * @package Wikula
+ * @link https://github.com/phaidon/Wikula
+ *
+ * Please see the NOTICE file distributed with this source code for further
+ * information regarding copyright and licensing.
+ */
+
+/**
  * Smarty plugin to display a twitter button.
  *
  * Available parameters
@@ -11,12 +22,10 @@
  *   For the News module: {twitter url=$links.permalink title=$info.title}
  *   For a Clip publication: {twitter url=$returnurl title=$pubdata.core_title}
  *
- * @see   Socialise_Api_Plugin::twitter
- * @link  http://code.zikula.org/socialise
  * @param array  $params  All attributes passed to this function from the template.
  * @param object &$smarty Reference to the Smarty object.
  *
- * @return string HTML output.
+ * @return string
  */
 function smarty_function_twitter($params, &$smarty)
 {

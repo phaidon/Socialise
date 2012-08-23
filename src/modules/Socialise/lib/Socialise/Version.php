@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Copyright socialise Team 2011
  *
@@ -14,8 +13,18 @@
  * information regarding copyright and licensing.
  */
 
+/**
+ * Provides metadata for this module to the Extensions module.
+ */
 class Socialise_Version extends Zikula_AbstractVersion 
 {
+    /**
+     * Meta data
+     *
+     * This function returns the meta data of the module.
+     *
+     * @return array
+     */
     public function getMetaData()
     {
         $meta = array();

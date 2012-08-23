@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Copyright socialise Team 2011
  *
@@ -14,8 +13,18 @@
  * information regarding copyright and licensing.
  */
 
+/**
+ * User api class.
+ */
 class Socialise_Api_User extends Zikula_AbstractApi
 {
+    /**
+     * Get keys.
+     *
+     * @param array $args Arguments.
+     *
+     * @return string.
+     */
     public function getKeys($args=array())
     {
         $keys = $this->getVar('keys');
@@ -30,6 +39,11 @@ class Socialise_Api_User extends Zikula_AbstractApi
         return $keys;
     }
 
+    /**
+     * Get current url.
+     *
+     * @return string.
+     */
     public function getCurrentUrl()
     {
         return System::getBaseURL() . substr(System::serverGetVar('REQUEST_URI'), 1);
@@ -38,7 +52,6 @@ class Socialise_Api_User extends Zikula_AbstractApi
     /**
      * Get available services.
      *
-     * @author Fabian Wuertz
      * @return array Array of services.
      */
     public function getServices()
@@ -408,62 +421,7 @@ class Socialise_Api_User extends Zikula_AbstractApi
                 'name'  => 'Plurk',
                 'title' => $this->__f('Share this on %s', 'Plurk'),
                 'url'   => 'http://www.plurk.com/m?content={title}+-+{url}&amp;qualifier=titles',
-            ),
-            /*'dzone'=>array(
-                'name'  => 'DZone',
-                'title' => $this->__f('Add this to %s', 'DZone'),
-                'url'   => 'http://www.dzone.com/links/add.html?url={url}&amp;title={title}&amp;description=POST_SUMMARY',
-            ),*/
-            /*'kaevur'=>array(
-                'name'  => 'Kaevur (' . $this->__('Estonian') . ')',
-                'title' => $this->__f('Share this on %s', 'Kaevur'),
-                'url'   => 'http://kaevur.com/submit.php?url={url}',
-            ),*/
-            /*'virb'=>array(
-                'name'  => 'Virb',
-                'title' => $this->__f('Share this on %s', 'Virb'),
-                'url'   => 'http://virb.com/title?external&amp;v=2&amp;url={url}&amp;title={title}',
-            ),*/
-            /*'box'=>array(
-                'name'  => 'Box.net',
-                'title' => $this->__f('Add this link to %s', 'Box.net'),
-                'url'   => 'https://www.box.net/api/1.0/import?url={url}&amp;name={title}&amp;description=POST_SUMMARY&amp;import_as=link',
-            ),*/
-            /*'oknotizie'=>array(
-                'name'  => 'OkNotizie (' . $this->__('Italian') . ')',
-                'title' => $this->__f('Share this on %s', 'OkNotizie'),
-                'url'   => 'http://oknotizie.virgilio.it/post?url={url}&amp;title={title}',
-            ),*/
-            /*'bonzobox'=>array(
-                'name'  => 'BonzoBox',
-                'title' => $this->__f('Add this to %s', 'BonzoBox'),
-                'url'   => 'http://bonzobox.com/toolbar/add?pop=1&amp;u={url}&amp;t={title}&amp;d=POST_SUMMARY',
-            ),*/
-            /*'plaxo'=>array(
-                'name'  => 'Plaxo',
-                'title' => $this->__f('Share this on %s', 'Plaxo'),
-                'url'   => 'http://www.plaxo.com/?title_link={url}',
-            ),*/
-            /*'springpad'=>array(
-                'name'  => 'SpringPad',
-                'title' => $this->__f('Spring this on %s', 'SpringPad'),
-                'url'   => 'http://springpadit.com/clip.action?body=POST_SUMMARY&amp;url={url}&amp;format=microclip&amp;title={title}&amp;isSelected=true',
-            ),*/
-            /*'zabox'=>array(
-                'name'  => 'Zabox',
-                'title' => $this->__f('Box this on %s', 'Zabox'),
-                'url'   => 'http://www.zabox.net/submit.php?url={url}',
-            ),*/
-            /*'viadeo'=>array(
-                'name'  => 'Viadeo',
-                'title' => $this->__f('Share this on %s', 'Viadeo'),
-                'url'   => 'http://www.viadeo.com/titleit/title/?url={url}&amp;title={title}&amp;urlaffiliate=31138',
-            ),*/
-            /*'bzzster'=>array(
-                'name'  => 'Buzzster!',
-                'title' => $this->__f('Share this via %s', 'Buzzster!'),
-                'url'   => "javascript:var%20s=document.createElement('script');s.src='http://www.buzzster.com/javascripts/bzz_adv.js';s.type='text/javascript';void(document.getElementsByTagName('head')[0].appendChild(s));",
-            ),*/
+            )
         );
         ksort($services); //sort array by keys
 

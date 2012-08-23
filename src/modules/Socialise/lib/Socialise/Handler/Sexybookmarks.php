@@ -13,27 +13,36 @@
  * information regarding copyright and licensing.
  */
 
+/**
+ * This class provides a handler to modify the sexybookmarks buttons.
+ */
 class Socialise_Handler_Sexybookmarks extends Zikula_Form_AbstractHandler
 {
     /**
-     * Setup form.
+     * Initialise the form handler
      *
-     * @param Form_View $view Current Form_View instance.
+     * @param Zikula_Form_View $view Reference to Form render object.
      *
      * @return boolean
+     *
+     * @throws Zikula_Exception_Forbidden If the current user does not have adequate permissions to perform this function.
      */
     public function initialize(Zikula_Form_View $view)
     {
+        if (!SecurityUtil::checkPermission('Socialise::', '::', ACCESS_ADMIN)) {
+            throw new Zikula_Exception_Forbidden(LogUtil::getErrorMsgPermission());
+        }
+
         $sexybookmarks = $this->getVar('sexybookmarks');
 
         $services = ModUtil::apiFunc('socialise', 'user', 'getServices');
         $servicesAsList= array();
-        foreach($services as $k => $value) {
+        foreach ($services as $k => $value) {
             $servicesAsList[] = array('value' => $k, 'text' => $value['name']);
         }
 
         $activeServices = array();
-        foreach($sexybookmarks as $k) {
+        foreach ($sexybookmarks as $k) {
             $activeServices[$k] = $services[$k];
         }
 
@@ -48,10 +57,10 @@ class Socialise_Handler_Sexybookmarks extends Zikula_Form_AbstractHandler
     /**
      * Handle form submission.
      *
-     * @param Form_View $view  Current Form_View instance.
-     * @param array     &$args Args.
+     * @param Zikula_Form_View $view  Reference to Form render object.
+     * @param array            &$args Arguments of the command.
      *
-     * @return boolean
+     * @return boolean|void
      */
     public function handleCommand(Zikula_Form_View $view, &$args)
     {

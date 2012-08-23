@@ -1,7 +1,6 @@
 <?php
-
 /**
- * Copyright socialise Team 2011
+ * Copyright Socialise Team 2011
  *
  * This work is contributed to the Zikula Foundation under one or more
  * Contributor Agreements and licensed to You under the following license:
@@ -14,10 +13,18 @@
  * information regarding copyright and licensing.
  */
 
+/**
+ * Provides module installation and upgrade services for the Socialise module.
+ */
 class Socialise_Installer extends Zikula_AbstractInstaller
 {
     /**
-     * Initialise the Socialize module.
+     * initialise the template module
+     *
+     * This function is only ever called once during the lifetime of a particular
+     * module instance
+     *
+     * @return boolean
      */
     public function install()
     {
@@ -32,13 +39,14 @@ class Socialise_Installer extends Zikula_AbstractInstaller
     }
 
     /**
-     * Upgrade the Socialize module from an old version.
+     * Upgrade the errors module from an old version
      *
      * This function must consider all the released versions of the module!
      * If the upgrade fails at some point, it returns the last upgraded version.
      *
-     * @param        string   $oldVersion   version number string to upgrade from
-     * @return       mixed    true on success, last valid version string or false if fails
+     * @param string $oldversion Version number string to upgrade from.
+     *
+     * @return mixed True on success, last valid version string or false if fails.
      */
     public function upgrade($oldversion)
     {
@@ -71,7 +79,12 @@ class Socialise_Installer extends Zikula_AbstractInstaller
     }
 
     /**
-     * Delete the Socialize module.
+     * delete the errors module
+     *
+     * This function is only ever called once during the lifetime of a particular
+     * module instance
+     *
+     * @return boolean
      */
     public function uninstall()
     {
@@ -85,7 +98,10 @@ class Socialise_Installer extends Zikula_AbstractInstaller
     /**
      * Create the default data for the users module.
      *
-     * @return void
+     * This function is only ever called once during the lifetime of a particular
+     * module instance.
+     *
+     * @return boolean
      */
     public function defaultdata()
     {
@@ -118,5 +134,6 @@ class Socialise_Installer extends Zikula_AbstractInstaller
             )
         );
         $this->setVar('keys', $keys);
+        return true;
     }
 }

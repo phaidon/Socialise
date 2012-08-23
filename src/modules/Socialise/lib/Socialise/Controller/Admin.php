@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Copyright socialise Team 2011
  *
@@ -14,22 +13,28 @@
  * information regarding copyright and licensing.
  */
 
+/**
+ * Admin controller.
+ */
 class Socialise_Controller_Admin extends Zikula_AbstractController
 {
     /**
      * Main config screen.
+     *
+     * @return statement
      */
     public function main()
     {
         return $this->modifyconfig();
     }
 
+    /**
+     * Modify config
+     *
+     * @return statement
+     */
     public function modifyconfig()
     {
-        $this->throwForbiddenUnless(
-            SecurityUtil::checkPermission('Socialise::', '::', ACCESS_ADMIN)
-        );
-
         $form = FormUtil::newForm('Socialise', $this);
         return $form->execute('admin/modifyconfig.tpl', new Socialise_Handler_Keys() );
     }
@@ -83,9 +88,13 @@ class Socialise_Controller_Admin extends Zikula_AbstractController
 
         return $this->view->fetch('admin/googleplus.tpl');
     }
-    
-    
-    
+
+
+    /**
+     * socialshareprivacy.
+     *
+     * @return string Output of the socialshareprivacy admin interface.
+     */
     public function socialshareprivacy()
     {
         $this->throwForbiddenUnless(

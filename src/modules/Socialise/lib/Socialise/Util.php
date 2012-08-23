@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Copyright socialise Team 2011
  *
@@ -14,13 +13,24 @@
  * information regarding copyright and licensing.
  */
 
+/**
+ * Provides module util.
+ */
 class Socialise_Util
 {
+
+    /**
+     * Register plugin
+     *
+     * @param Zikula_Event $event Event.
+     *
+     * @return boolean|void
+     */
     public static function registerPluginDir(Zikula_Event $event)
     {
         $modinfo = ModUtil::getInfoFromName('Socialise');
         if (!$modinfo) {
-            return;
+            return false;
         }
         $view = $event->getSubject();
         $view->addPluginDir("modules/".$modinfo['directory']."/templates/plugins");

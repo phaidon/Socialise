@@ -13,6 +13,9 @@
  * information regarding copyright and licensing.
  */
 
+/**
+ * Plugin api class.
+ */
 class Socialise_Api_Plugin extends Zikula_AbstractApi
 {
     /**
@@ -52,13 +55,13 @@ class Socialise_Api_Plugin extends Zikula_AbstractApi
     /**
      * Twitter plugin
      *
-     * @param  array $args Parameters from the plugin (title, url, count, via, related).
+     * @param array $args Parameters from the plugin (title, url, count, via, related).
      *
-     * @return string Output.
+     * @return string
      */
     public function twitter($args)
     {
-        # http://twitter.com/about/resources/tweetbutton#type-fields
+        // http://twitter.com/about/resources/tweetbutton#type-fields
         $args = array(
             'title'   => (isset($args['title']) && $args['title']) ? $args['title'] : '',
             'url'     => (isset($args['url']) && $args['url']) ? $args['url'] : '',
@@ -87,13 +90,13 @@ class Socialise_Api_Plugin extends Zikula_AbstractApi
     /**
      * Google+ plugin
      *
-     * @param  array $args Parameters from the plugin (title, url, count, via, related).
+     * @param array $args Parameters from the plugin (title, url, count, via, related).
      *
      * @return string Output.
      */
     public function googleplus($args)
     {
-        # http://twitter.com/about/resources/tweetbutton#type-fields
+        // http://twitter.com/about/resources/tweetbutton#type-fields
         $args = array(
             'title'       => (isset($args['title']) && $args['title']) ? $args['title'] : '',
             'description' => (isset($args['description']) && $args['description']) ? $args['description'] : '',
@@ -118,13 +121,13 @@ class Socialise_Api_Plugin extends Zikula_AbstractApi
     /**
      * Facebook like button plugin
      *
-     * @param  array $args Parameters from the plugin (tpl, url, layout, rel, width, height, action, colorscheme, font, faces, addmetatags, metatitle, metatype, metaimage).
+     * @param array $args Parameters from the plugin (tpl, url, layout, rel, width, height, action, colorscheme, font, faces, addmetatags, metatitle, metatype, metaimage).
      *
      * @return string Output.
      */
     public function fblike($args)
     {
-        # http://developers.facebook.com/docs/reference/plugins/like/
+        // http://developers.facebook.com/docs/reference/plugins/like/
 
         // validation of Facebook ID
         $keys = ModUtil::apiFunc('Socialise', 'user', 'getKeys', array('service' => 'Facebook'));
@@ -213,7 +216,7 @@ class Socialise_Api_Plugin extends Zikula_AbstractApi
                 $metadata['image'] = $args['metaimage'];
             }
 
-            foreach($metadata as $prop => $content ) {
+            foreach ($metadata as $prop => $content) {
                 PageUtil::addVar('header', "<!--\n".'<meta property="og:'.$prop.'" content="'.$content.'" />'."\n-->");
             }
         }
@@ -231,7 +234,7 @@ class Socialise_Api_Plugin extends Zikula_AbstractApi
     /**
      * Sexybutton plugin.
      *
-     * @param  array $args Parameters from the plugin (title, url).
+     * @param array $args Parameters from the plugin (title, url).
      *
      * @return string Output.
      */
@@ -265,9 +268,9 @@ class Socialise_Api_Plugin extends Zikula_AbstractApi
     /**
      * ShareThis plugin.
      *
-     * @param  array $args Parameters from the plugin (id, title, url, text).
+     * @param ∂array $args Parameters from the plugin (id, title, url, text).
      *
-     * @return string Output.
+     * @return string
      */
     public function sharethis($args)
     {
@@ -301,12 +304,11 @@ class Socialise_Api_Plugin extends Zikula_AbstractApi
     /**
      * socialshareprivacy plugin.
      *
-     * @param  array $args Parameters from the plugin (id, title, url, text).
-     *
-     * @return string Output.
+     * @return string
      */
-    public function socialshareprivacy() {
-    	return $this->view->fetch('plugin/socialshareprivacy.tpl');
-	}
-	
+    public function socialshareprivacy()
+    {
+        return $this->view->fetch('plugin/socialshareprivacy.tpl');
+    }
+
 }

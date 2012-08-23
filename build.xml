@@ -33,10 +33,10 @@
         
         
 
-        <!-- PHP MD analysis -->
-          <exec executable="phpmd" dir="${env.WORKSPACE}/src" failonerror="off">
-           <arg line="source xml codesize,unusedcode --reportfile '${logsdir}/pmd.xml'" />
-          </exec>
+         <!-- PHP MD analysis -->
+        <exec executable="phpmd" dir="${env.WORKSPACE}" failonerror="off">
+           <arg line="src xml codesize,unusedcode --reportfile '${logsdir}/pmd.xml'" />
+        </exec>
 
     
         <echo message="Creating archive..." />

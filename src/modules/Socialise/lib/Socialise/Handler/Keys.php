@@ -13,17 +13,26 @@
  * information regarding copyright and licensing.
  */
 
+/**
+ * This class provides a handler to modify the keys.
+ */
 class Socialise_Handler_Keys extends Zikula_Form_AbstractHandler
 {
     /**
-     * Setup form.
+     * Initialise the form handler
      *
-     * @param Form_View $view Current Form_View instance.
+     * @param Zikula_Form_View $view Reference to Form render object.
      *
      * @return boolean
+     *
+     * @throws Zikula_Exception_Forbidden If the current user does not have adequate permissions to perform this function.
      */
     public function initialize(Zikula_Form_View $view)
     {
+        if (!SecurityUtil::checkPermission('Socialise::', '::', ACCESS_ADMIN)) {
+            throw new Zikula_Exception_Forbidden(LogUtil::getErrorMsgPermission());
+        }
+
         $this->view->assign('indexes', $this->getVar('services'))
                    ->assign($this->getVar('keys'));
 
@@ -33,10 +42,10 @@ class Socialise_Handler_Keys extends Zikula_Form_AbstractHandler
     /**
      * Handle form submission.
      *
-     * @param Form_View $view  Current Form_View instance.
-     * @param array     &$args Args.
+     * @param Zikula_Form_View $view  Reference to Form render object.
+     * @param array            &$args Arguments of the command.
      *
-     * @return boolean
+     * @return boolean|void
      */
     public function handleCommand(Zikula_Form_View $view, &$args)
     {

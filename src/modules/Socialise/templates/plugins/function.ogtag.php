@@ -1,5 +1,16 @@
 <?php
 /**
+ * Copyright Wikula Team 2011
+ *
+ * @license GNU/GPLv3 (or at your option, any later version).
+ * @package Wikula
+ * @link https://github.com/phaidon/Wikula
+ *
+ * Please see the NOTICE file distributed with this source code for further
+ * information regarding copyright and licensing.
+ */
+
+/**
  * Smarty plugin to set a Open Graph metatag.
  *
  * Available parameters
@@ -26,23 +37,24 @@
  *   {ogtag prop='type' content='blog'}
  *   {ogtag prop='image' content='image/path.ext'}
  *
+ * @param array  $params All attributes passed to this function from the template.
+ * @param object &$view  Reference to the Smarty object.
+ *
  * @link  http://code.zikula.org/socialise
  * @link  http://developers.facebook.com/docs/opengraph#types
- * @param array  $params  All attributes passed to this function from the template.
- * @param object &$smarty Reference to the Smarty object.
  *
- * @return void.
+ * @return boolean|string
  */
 function smarty_function_ogtag($params, &$view)
 {
     if (!isset($params['prop']) || !$params['prop']) {
         $view->trigger_error(__f('Error! in %1$s: the %2$s parameter must be specified.', array('ogtag', 'prop')));
-        return;
+        return false;
     }
 
     if (!isset($params['content'])) {
         $view->trigger_error(__f('Error! in %1$s: the %2$s parameter must be specified.', array('ogtag', 'content')));
-        return;
+        return false;
     }
 
     PageUtil::addVar('header', "<!--\n".'<meta property="og:'.$params['prop'].'" content="'.$params['content'].'" />'."\n-->");

@@ -1,6 +1,17 @@
 <?php
 /**
- * Smarty plugin to display a facebook like button.
+ * Copyright Wikula Team 2011
+ *
+ * @license GNU/GPLv3 (or at your option, any later version).
+ * @package Wikula
+ * @link https://github.com/phaidon/Wikula
+ *
+ * Please see the NOTICE file distributed with this source code for further
+ * information regarding copyright and licensing.
+ */
+
+/**
+ * Smarty plugin to display a sexybookmarks buttons.
  *
  * Available parameters
  *
@@ -11,12 +22,10 @@
  *   For the News module: {fblike url=$links.permalink}
  *   For a Clip publication: {fblike url=$returnurl}
  *
- * @see   Socialise_Api_Plugin::fblike
- * @link  http://code.zikula.org/socialise
  * @param array  $params  All attributes passed to this function from the template.
  * @param object &$smarty Reference to the Smarty object.
  *
- * @return string HTML output.
+ * @return string
  */
 function smarty_function_fblike($params, &$smarty)
 {

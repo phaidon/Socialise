@@ -1,6 +1,17 @@
 <?php
 /**
- * Smarty plugin to display the sharethis social bookmarking dialog.
+ * Copyright Wikula Team 2011
+ *
+ * @license GNU/GPLv3 (or at your option, any later version).
+ * @package Wikula
+ * @link https://github.com/phaidon/Wikula
+ *
+ * Please see the NOTICE file distributed with this source code for further
+ * information regarding copyright and licensing.
+ */
+
+/**
+ * Smarty plugin to display a sharethis button.
  *
  * Available parameters
  *
@@ -13,14 +24,10 @@
  *   For the News module: {sharethis id=$info.sid url=$links.permalink title=$info.title}
  *   For a Clip publication: {sharethis id=$pubdata.core_uniqueid url=$returnurl title=$pubdata.core_title}
  *
- * @see    Socialise_Api_Plugin::sharethis
- * @author Mark West
- * @since  08/02/2007
- * @link   http://www.markwest.me.uk/
- * @param  array  $params  All attributes passed to this function from the template.
- * @param  object &$smarty Reference to the Smarty object.
+ * @param array  $params  All attributes passed to this function from the template.
+ * @param object &$smarty Reference to the Smarty object.
  *
- * @return string HTML output.
+ * @return string
  */
 function smarty_function_sharethis($params, &$smarty)
 {
