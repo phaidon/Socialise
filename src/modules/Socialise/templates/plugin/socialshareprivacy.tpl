@@ -4,20 +4,30 @@
 
 <script type="text/javascript">
     jQuery(document).ready(function($){
+
         $('#socialshareprivacy').socialSharePrivacy(
-            {
-                services : {
-                    facebook : {
-                        'dummy_img'  : Zikula.Config.baseURL+'modules/Socialise/javascript/socialshareprivacy/socialshareprivacy/images/dummy_facebook.png'
-                    },
-                    twitter : {
-                        'dummy_img'  : Zikula.Config.baseURL+'modules/Socialise/javascript/socialshareprivacy/socialshareprivacy/images/dummy_twitter.png'
-                    },
-                    gplus : {
-                        'dummy_img'  : Zikula.Config.baseURL+'modules/Socialise/javascript/socialshareprivacy/socialshareprivacy/images/dummy_gplus.png'
-                    }
+        
+        
+        
+        
+        {
+            services : {
+                facebook : {
+                    'dummy_img'  : Zikula.Config.baseURL+'modules/Socialise/javascript/socialshareprivacy/socialshareprivacy/images/dummy_facebook.png'
+                },
+                twitter : {
+                    'dummy_img'  : Zikula.Config.baseURL+'modules/Socialise/javascript/socialshareprivacy/socialshareprivacy/images/dummy_twitter.png'
+                },
+                gplus : {
+                    'dummy_img'  : Zikula.Config.baseURL+'modules/Socialise/javascript/socialshareprivacy/socialshareprivacy/images/dummy_gplus.png'
                 }
             }
+        }
+        
+        
+        
+        
+        
         ); 
     });
 </script>

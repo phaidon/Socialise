@@ -1,10 +1,10 @@
 <?php
 /**
- * Copyright Wikula Team 2011
+ * Copyright Socialise Team 2011
  *
  * @license GNU/GPLv3 (or at your option, any later version).
- * @package Wikula
- * @link https://github.com/phaidon/Wikula
+ * @package Socialise
+ * @link https://github.com/phaidon/Socialise
  *
  * Please see the NOTICE file distributed with this source code for further
  * information regarding copyright and licensing.
@@ -31,6 +31,7 @@
  */
 function smarty_function_sharethis($params, &$smarty)
 {
+    unset($smarty);
     return ModUtil::apiFunc('Socialise', 'plugin', 'sharethis', $params);
 }
 

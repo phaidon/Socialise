@@ -46,10 +46,10 @@ class Socialise_Handler_Sexybookmarks extends Zikula_Form_AbstractHandler
             $activeServices[$k] = $services[$k];
         }
 
-        $this->view->assign($sexybookmarks)
-                   ->assign('range', range('1', '8'))
-                   ->assign('activeServices', $activeServices)
-                   ->assign('services', $servicesAsList);
+        $view->assign($sexybookmarks)
+             ->assign('range', range('1', '8'))
+             ->assign('activeServices', $activeServices)
+             ->assign('services', $servicesAsList);
 
         return true;
     }
@@ -64,6 +64,8 @@ class Socialise_Handler_Sexybookmarks extends Zikula_Form_AbstractHandler
      */
     public function handleCommand(Zikula_Form_View $view, &$args)
     {
+        unset($args);
+
         // check for valid form
         if (!$view->isValid()) {
             return false;

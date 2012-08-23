@@ -33,8 +33,8 @@ class Socialise_Handler_Keys extends Zikula_Form_AbstractHandler
             throw new Zikula_Exception_Forbidden(LogUtil::getErrorMsgPermission());
         }
 
-        $this->view->assign('indexes', $this->getVar('services'))
-                   ->assign($this->getVar('keys'));
+        $view->assign('indexes', $this->getVar('services'))
+             ->assign($this->getVar('keys'));
 
         return true;
     }
