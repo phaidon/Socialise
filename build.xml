@@ -32,7 +32,7 @@
         </exec>
         
                 <echo message="csslint..." />
-        <fileset dir="src/modules/Piwik/style" id="cssfiles.raw">
+        <fileset dir="src/modules/Socialise/style" id="cssfiles.raw">
           <include name="**/*.css" />
         </fileset>
         <pathconvert pathsep=" " property="cssfiles.clean" refid="cssfiles.raw" />
