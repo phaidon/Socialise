@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <project name="Socialise" default="build">
+
+    <property environment="env" /> 
+    <property name="builddir" value="${env.WORKSPACE}/build" />
+    <property name="package" value="${env.JOB_NAME}.build${env.BUILD_NUMBER}" />
+    <property name="archivedir" value="${builddir}/archive" />
+    <property name="logsdir" value="${builddir}/logs" />
+    <property name="packagepath" value="${exportdir}/${env.JOB_NAME}" />
+    <property name="checksumpath" value="${archivedir}/${package}-checksums" />
+    <property name="patchdir" value="${builddir}/patch" />
+    <property name="tmpdir" value="${builddir}/tmp" />
+    <property name="ignorepaths" value="lib/vendor/*,javascript/*,lib/legacy" />
+    <property name="ownjslist" value="javascript/dashboard.js" />
+
+
+    <target name="build">
+    
+        <echo message="Clean..." />
+        <delete dir="${builddir}" includeemptydirs="true" />
+    
+    
+        <echo message="Prepare..." />
+        <mkdir dir="${builddir}" />
+        <mkdir dir="${logsdir}" />
+        <mkdir dir="${archivedir}" />
+        
+        
+        <echo message="PHP_CodeSniffer..." />
+        <exec executable="phpcs">
+            <arg line="--extensions=php --report=checkstyle --standard=Zikula --report-file=${logsdir}/phpcs.xml src" />
+        </exec>
+        
+        
+
+        <!-- PHP MD analysis -->
+          <exec executable="phpmd" dir="${env.WORKSPACE}/src" failonerror="off">
+           <arg line="source xml codesize,unusedcode --reportfile '${logsdir}/pmd.xml'" />
+          </exec>
+
+    
+        <echo message="Creating archive..." />
+        <!-- zip's don't play nicely in Phing - using direct command -->
+        <!-- exec escape="false" command="cd ${exportdir}; zip -D -r ${archivedir}/${package}.zip ." / -->
+        <zip destfile="${archivedir}/${package}.zip">
+            <fileset dir="${env.WORKSPACE}/src/modules">
+                <include name="**/**" />
+            </fileset>
+        </zip>
+
+</target>
+
+</project>
