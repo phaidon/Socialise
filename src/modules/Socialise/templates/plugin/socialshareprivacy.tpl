@@ -6,10 +6,6 @@
     jQuery(document).ready(function($){
 
         $('#socialshareprivacy').socialSharePrivacy(
-        
-        
-        
-        
         {
             services : {
                 facebook : {
@@ -21,13 +17,10 @@
                 gplus : {
                     'dummy_img'  : Zikula.Config.baseURL+'modules/Socialise/javascript/socialshareprivacy/socialshareprivacy/images/dummy_gplus.png'
                 }
-            }
+            },
+            'css_path' : Zikula.Config.baseURL+'modules/Socialise/javascript/socialshareprivacy/socialshareprivacy/socialshareprivacy.css'
         }
-        
-        
-        
-        
-        
+
         ); 
     });
 </script>
